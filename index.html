@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio de Fatou kiné Gueye</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+  <!-- Preloader -->
+  <div id="loader">
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  </div>
+
+  <nav>
+    <ul>
+      <li><a href="#accueil">Accueil</a></li>
+      <li><a href="#a-propos">À propos</a></li>
+      <li><a href="#projets">Projets</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero" id="accueil">
+    <img src="photo-fatou.jpg" alt="Photo de Fatou" class="photo-profil">
+    <h1>Fatou-kiné Gueye</h1>
+    <p class="slogan">Je donne vie au design web</p>
+  </header>
+
+  <section id="a-propos">
+    <h2>À propos de moi</h2>
+    <p>Développeuse web Front-end passionnée, je crée des interfaces modernes, intuitives et esthétiques. J'accorde une grande importance à l'expérience utilisateur, aux détails et à la performance.</p>
+  </section>
+
+  <section id="projets">
+    <h2>Mes projets</h2>
+    <div class="galerie-projets">
+      <div class="carte-projet">
+        <a href="projets/portfolio.html">
+          <img src="projet-portfolio.png" alt="Portfolio personnel">
+          <h3>Portfolio personnel</h3>
+          <p>Un site responsive conçu en HTML, CSS et JavaScript.</p>
+        </a>
+      </div>
+      <div class="carte-projet">
+        <a href="projets/gestion.html">
+          <img src="projet-gestion.png" alt="Application de gestion">
+          <h3>Application de gestion</h3>
+          <p>Outil de suivi avec tableau de bord, design épuré.</p>
+        </a>
+      </div>
+      <div class="carte-projet">
+        <a href="projets/ecommerce.html">
+          <img src="projet-ecommerce.png" alt="Site e-commerce">
+          <h3>Site e-commerce</h3>
+          <p>Boutique de produits déco, interface fluide et moderne.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>N'hésitez pas à me contacter :</p>
+    <p class="email">fatou.gueye.pro@gmail.com</p>
+    <form class="form-contact">
+      <input type="text" name="nom" placeholder="Votre nom" required>
+      <input type="email" name="email" placeholder="Votre email" required>
+      <textarea name="message" placeholder="Votre message" rows="5" required></textarea>
+      <button type="submit">Envoyer</button>
+    </form>
+  </section>
+
+  <script>
+    // Cacher le preloader une fois la page complètement chargée
+    window.addEventListener('load', function() {
+      document.getElementById('loader').style.display = 'none';
+    });
+
+    // Apparition au scroll
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.style.opacity = 1;
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('section').forEach(sec => {
+      sec.style.opacity = 0;
+      sec.style.transition = 'opacity 1s ease-in-out';
+      observer.observe(sec);
+    });
+  </script>
+</body>
+</html>

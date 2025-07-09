@@ -1,0 +1,166 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #fffafc;
+  color: #4b3a3a;
+}
+/* Preloader */
+#loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fffafc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+#loader .dot {
+  width: 15px;
+  height: 15px;
+  margin: 0 5px;
+  border-radius: 50%;
+  background: #ffc0cb;
+  animation: blink 1.4s infinite both;
+}
+#loader .dot:nth-child(2) { animation-delay: 0.2s; }
+#loader .dot:nth-child(3) { animation-delay: 0.4s; }
+@keyframes blink {
+  0%, 80%, 100% { opacity: 0; }
+  40% { opacity: 1; }
+}
+
+nav {
+  background: #ffe4e1;
+  padding: 1em 2em;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2em;
+  margin: 0;
+  padding: 0;
+}
+nav a {
+  text-decoration: none;
+  color: #4b3a3a;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+nav a:hover {
+  color: #c71585;
+}
+.hero {
+  text-align: center;
+  padding: 6em 1em 4em;
+  margin-top: 60px;
+}
+.photo-profil {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 3px solid #ffc0cb;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+h1 {
+  font-size: 2.5em;
+  color: #c71585;
+  margin: 0.5em 0;
+}
+.slogan {
+  font-size: 1.2em;
+  font-style: italic;
+  color: #a0522d;
+}
+section {
+  padding: 4em 2em;
+  opacity: 0;
+}
+section:nth-of-type(odd) {
+  background: #fffafc;
+}
+section:nth-of-type(even) {
+  background: #fff;
+}
+h2 {
+  font-size: 2em;
+  color: #8b0000;
+  border-left: 5px solid #db7093;
+  padding-left: 1em;
+  margin-bottom: 1em;
+}
+.galerie-projets {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2em;
+}
+.carte-projet {
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+.carte-projet:hover {
+  transform: translateY(-5px);
+}
+.carte-projet img {
+  width: 100%;
+  display: block;
+}
+.carte-projet h3 {
+  margin: 0.5em 1em;
+  color: #c71585;
+}
+.carte-projet p {
+  margin: 0 1em 1em;
+  color: #555;
+}
+#contact .email {
+  display: inline-block;
+  background: #ffe4e1;
+  padding: 0.5em 1em;
+  border-radius: 20px;
+  margin-top: 0.5em;
+}
+.form-contact {
+  margin-top: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.form-contact input,
+.form-contact textarea {
+  padding: 0.75em;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 100%;
+  font-size: 1em;
+}
+.form-contact button {
+  background: #c71585;
+  color: #fff;
+  border: none;
+  padding: 0.75em 1.5em;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.form-contact button:hover {
+  background: #a0522d;
+}
+@media (max-width: 768px) {
+  nav { justify-content: center; }
+  .hero { padding: 6em 1em 3em; }
+}
