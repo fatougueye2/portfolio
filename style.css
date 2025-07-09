@@ -1,3 +1,6 @@
+/* ==========================================================================
+   1. Base Styles
+   ========================================================================== */
 body {
   margin: 0;
   padding: 0;
@@ -6,7 +9,22 @@ body {
   color: #4b3a3a;
 }
 
-/* Preloader */
+/* ==========================================================================
+   2. Link Reset
+   Remove underlines and inherit color for key links
+   ========================================================================== */
+.btn-cv a,
+.carte-projet a,
+.carte-projet a h3,
+.carte-projet a p {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ==========================================================================
+   3. Preloader
+   A simple three-dot blinking loader
+   ========================================================================== */
 #loader {
   position: fixed;
   top: 0;
@@ -29,61 +47,206 @@ body {
   animation: blink 1.4s infinite both;
 }
 
-#loader .dot:nth-child(2) {
-  animation-delay: 0.2s;
-}
-
-#loader .dot:nth-child(3) {
-  animation-delay: 0.4s;
-}
+#loader .dot:nth-child(2) { animation-delay: 0.2s; }
+#loader .dot:nth-child(3) { animation-delay: 0.4s; }
 
 @keyframes blink {
-
-  0%,
-  80%,
-  100% {
-    opacity: 0;
-  }
-
-  40% {
-    opacity: 1;
-  }
+  0%, 80%, 100% { opacity: 0; }
+  40%           { opacity: 1; }
 }
 
+/* ==========================================================================
+   4. Navbar
+   --------------------------------------------------------------------------
+   4.1 Default – transparent, centered with underline
+   4.2 Scrolled – vertical “drawer” on right
+   ========================================================================== */
+
+/* 4.1 Default navbar */
 nav {
-  background: #ffe4e1;
-  padding: 1em 2em;
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
-  z-index: 100;
-  display: flex;
-  justify-content: center;
+  background: transparent;
+  padding: 1rem 0;
+  z-index: 1000;
 }
 
 nav ul {
-  list-style: none;
   display: flex;
-  gap: 2em;
+  justify-content: center;
+  gap: 2rem;
   margin: 0;
   padding: 0;
+  list-style: none;
 }
 
 nav a {
-  text-decoration: none;
   color: #4b3a3a;
-  font-weight: 500;
-  transition: color 0.3s;
+  font-weight: bold;
+    text-decoration: none;
 }
 
-nav a:hover {
+nav::after {
+  content: "";
+  display: block;
+  width: 60%;
+  max-width: 820px;
+  height: 1px;
+  background-color: #4d4c4c;
+  margin: 0.5rem auto 0;
+}
+
+/* 4.2 Scrolled state: hide underline and move nav to right drawer */
+#main-nav.scrolled::after {
+  display: none;
+}
+#main-nav.scrolled {
+  left: auto;
+  right: 1rem;
+}
+
+/* Vertical drawer styling on scroll */
+#main-nav.scrolled ul {
+  position: fixed;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;         /* no extra padding around container */
+  background: none;   /* transparent container */
+  list-style: none;
+  z-index: 1000;
+  opacity: 0.6;       /* semi-transparent until hover */
+  transition: opacity 0.3s ease;
+}
+
+#main-nav.scrolled ul:hover {
+  opacity: 1;
+}
+
+/* ==========================================================================
+   5. Drawer Items (Circles)
+   --------------------------------------------------------------------------
+   Hide off-screen until hover; remove separators
+   ========================================================================== */
+/* — Sidebar verticalée : on cache le texte et on garde que l’icône — */
+/* ================================
+   Sidebar vertical — icônes only
+   déclenché avec .scrolled
+   ================================ */
+#main-nav.scrolled ul {
+  position: fixed;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;         /* plus de padding global */
+  list-style: none;
+  background: none;   /* on vire tout fond */
+  z-index: 1000;
+  opacity: 0.6;       /* semi-transparent */
+  transition: opacity 0.3s ease;
+}
+/* 1) Par défaut – on affiche le texte, on cache l’image */
+#main-nav ul li a .sidebar-icon {
+  display: none;
+}
+#main-nav ul li a .nav-text {
+  display: inline;
+}
+
+/* 2) Quand la nav est scrolled – on cache le texte, on affiche l’image */
+/* ========================================================================
+   Sidebar icons (PNG) — même taille pour toutes
+   ======================================================================== */
+#main-nav.scrolled ul li a .sidebar-icon {
+  width: 1.8rem;           /* largeur fixe */
+  height: 1.8rem;          /* hauteur fixe */
+  object-fit: contain;     /* garde les proportions sans déformation */
+  display: block;          /* pour que width/height s’appliquent correctement */
+  margin: 0;               /* supprime tout margin par défaut */
+  padding: 0;              /* supprime tout padding par défaut */
+}
+
+#main-nav.scrolled ul li a .nav-text {
+  display: none;
+}
+
+/* 3) Le “tiroir” : même transform que pour les cercles */
+#main-nav.scrolled ul li a {
+  transform: translateX(70%);
+  transition: transform 0.3s ease;
+}
+#main-nav.scrolled ul li:hover a {
+  transform: translateX(0);
+}
+
+#main-nav.scrolled ul:hover {
+  opacity: 1;         /* opacité full au hover */
+}
+
+/* Icônes dans les cercles */
+#main-nav.scrolled ul li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  transform: translateX(70%);       /* cache partiel */
+  transition: transform 0.3s ease, background 0.3s ease;
+  text-decoration: none !important; /* plus de soulignement */
+}
+#main-nav.scrolled ul li:hover a {
+  transform: translateX(0);         /* sortie complète */
+}
+
+/* Style de l’icône Font Awesome */
+#main-nav.scrolled ul li a i {
+  font-size: 1.1rem;
   color: #c71585;
+  background: rgba(255,182,193,0.6);
+  border-radius: 50%;
+  padding: 0.4rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+#main-nav.scrolled ul li:hover a i {
+  background: rgba(255,182,193,1);
+  color: #fff;
 }
 
+/* 1) Par défaut : on affiche le texte, on cache les icônes */
+#main-nav ul li a i {
+  display: none;
+}
+#main-nav ul li a .nav-text {
+  display: inline;
+}
+
+/* 2) En état scrolled : on cache le texte, on affiche les icônes */
+#main-nav.scrolled ul li a i {
+  display: inline-block;
+}
+#main-nav.scrolled ul li a .nav-text {
+  display: none;
+}
+
+
+/* ==========================================================================
+   6. Hero Section
+   ========================================================================== */
 .hero {
   text-align: center;
   padding: 6em 1em 4em;
-  margin-top: 60px;
+  margin-top: 60px; /* space beneath fixed navbar */
 }
 
 .photo-profil {
@@ -95,9 +258,9 @@ nav a:hover {
 }
 
 h1 {
+  margin: 0.5em 0;
   font-size: 2.5em;
   color: #c71585;
-  margin: 0.5em 0;
 }
 
 .slogan {
@@ -106,27 +269,30 @@ h1 {
   color: #a0522d;
 }
 
+/* ==========================================================================
+   7. Sections & Typography
+   --------------------------------------------------------------------------
+   Alternate backgrounds for visual rhythm
+   ========================================================================== */
 section {
   padding: 4em 2em;
   opacity: 0;
 }
 
-section:nth-of-type(odd) {
-  background: #fffafc;
-}
-
-section:nth-of-type(even) {
-  background: #fff;
-}
+section:nth-of-type(odd)  { background: #fffafc; }
+section:nth-of-type(even) { background: #fff; }
 
 h2 {
+  margin-bottom: 1em;
   font-size: 2em;
   color: #8b0000;
   border-left: 5px solid #db7093;
   padding-left: 1em;
-  margin-bottom: 1em;
 }
 
+/* ==========================================================================
+   8. Project Gallery
+   ========================================================================== */
 .galerie-projets {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -138,7 +304,7 @@ h2 {
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s;
+  transition: transform 0.3s ease;
 }
 
 .carte-projet:hover {
@@ -146,9 +312,12 @@ h2 {
 }
 
 .carte-projet img {
-  width: 100%;
-  display: block;
+  width: 100%;            /* occupe toute la largeur de la carte */
+  height: 200px;          /* fixe la hauteur (à ajuster) */
+  object-fit: cover;      /* recadre et zoom pour remplir */
+  display: block;         /* supprime l’espace blanc sous l’image */
 }
+
 
 .carte-projet h3 {
   margin: 0.5em 1em;
@@ -160,6 +329,9 @@ h2 {
   color: #555;
 }
 
+/* ==========================================================================
+   9. Contact Form & Email Badge
+   ========================================================================== */
 #contact .email {
   display: inline-block;
   background: #ffe4e1;
@@ -177,10 +349,10 @@ h2 {
 
 .form-contact input,
 .form-contact textarea {
+  width: 100%;
   padding: 0.75em;
   border: 1px solid #ddd;
   border-radius: 5px;
-  width: 100%;
   font-size: 1em;
 }
 
@@ -192,25 +364,18 @@ h2 {
   border-radius: 5px;
   font-size: 1em;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background 0.3s ease;
 }
 
 .form-contact button:hover {
   background: #a0522d;
 }
 
-@media (max-width: 768px) {
-  nav {
-    justify-content: center;
-  }
-
-  .hero {
-    padding: 6em 1em 3em;
-  }
-}
-
-/* Badges de languages */
-/* Points de language */
+/* ==========================================================================
+   10. Language Badges
+   --------------------------------------------------------------------------
+   Tiny dots with tooltips
+   ========================================================================== */
 .languages {
   display: flex;
   gap: 0.5em;
@@ -221,66 +386,26 @@ h2 {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  display: inline-block;
   position: relative;
   cursor: default;
 }
 
-/* Couleurs par langage via l'attribut data-lang */
-.lang[data-lang="NodeJs"] {
-  background: #70a861;
-}
+/* Data-lang color mapping (case-insensitive) */
+.lang[data-lang="nodejs" i]      { background: #70a861; }
+.lang[data-lang="expressjs" i]   { background: #000000; }
+.lang[data-lang="reactjs" i]     { background: #61dafb; }
+.lang[data-lang="dart" i]        { background: #0175c2; }
+.lang[data-lang="c++" i]         { background: #00599c; }
+.lang[data-lang="cmake" i]       { background: #064f8c; }
+.lang[data-lang="java" i]        { background: #b07219; }
+.lang[data-lang="javafx" i]      { background: #2c2255; }
+.lang[data-lang="javascript" i]  { background: #f7df1e; }
+.lang[data-lang="dockerfile" i]  { background: #2496ed; }
+.lang[data-lang="bash" i]        { background: #4eaa25; }
+.lang[data-lang="virtualbox" i]  { background: #183a61; }
+.lang[data-lang="css" i]         { background: #5599fe; }
 
-.lang[data-lang="ExpressJs"] {
-  background: #000000;
-}
-
-.lang[data-lang="ReactJs"] {
-  background: #61dafb;
-}
-
-.lang[data-lang="Dart"] {
-  background: #0175c2;
-}
-
-.lang[data-lang="C++"] {
-  background: #00599c;
-}
-
-.lang[data-lang="Cmake"] {
-  background: #064f8c;
-}
-
-.lang[data-lang="Java"] {
-  background: #b07219;
-}
-
-.lang[data-lang="JavaFX"] {
-  background: #2c2255;
-}
-
-.lang[data-lang="JavaScript"] {
-  background: #f7df1e;
-}
-
-.lang[data-lang="Dockerfile"] {
-  background: #2496ed;
-}
-
-.lang[data-lang="Bash"] {
-  background: #4eAA25;
-}
-
-.lang[data-lang="VirtualBox"] {
-  background: #183A61;
-}
-
-.lang[data-lang="CSS"] {
-  background: #5599fe;
-}
-
-
-/* Tooltip au hover inchangé */
+/* Tooltip on hover */
 .lang::after {
   content: attr(data-lang);
   position: absolute;
@@ -291,13 +416,96 @@ h2 {
   color: #fff;
   padding: 2px 6px;
   border-radius: 3px;
-  white-space: nowrap;
   font-size: 0.75em;
   opacity: 0;
-  transition: opacity 0.2s;
+  transition: opacity 0.2s ease;
   pointer-events: none;
 }
 
 .lang:hover::after {
+  opacity: 1;
+}
+
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+@media (max-width: 768px) {
+  nav ul {
+    justify-content: center;
+  }
+
+  .hero {
+    padding: 6em 1em 3em;
+  }
+
+  /* Simplify drawer on mobile: hide or convert to top menu */
+  #main-nav.scrolled ul {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   Project Detail Pages (projets/*.html)
+   ========================================================================== */
+
+/* 1. Navigation “Retour” */
+.detail-nav {
+  padding: 1rem 2rem;
+}
+.detail-nav a {
+  color: #c71585;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.detail-nav a:hover {
+  color: #8b0000;
+}
+
+/* 2. Conteneur principal */
+.detail-projet {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  opacity: 0;                     /* invisible au départ */
+  transition: opacity 0.6s ease;  /* fade-in */
+}
+
+/* 3. Titre du projet */
+.detail-projet h1 {
+  font-size: 2rem;
+  color: #c71585;
+  text-align: center;
+  margin-bottom: 0.75rem;
+}
+
+/* 4. Description */
+.detail-projet p {
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  text-align: justify;
+}
+
+/* 5. Image illustrative */
+.detail-projet img {
+  display: block;
+  max-width: 100%;
+  margin: 1.5rem auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 6. Badges de langages (reuse des classes existantes) */
+.detail-projet .languages {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+/* 7. Apparition automatique au chargement */
+body.projet-loaded .detail-projet {
   opacity: 1;
 }

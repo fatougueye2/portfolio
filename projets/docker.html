@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Conteneurisation avec Docker — Détails</title>
+  <link rel="stylesheet" href="../projets.css">
+</head>
+<body>
+
+  <!-- NAVIGATION “Retour” -->
+  <nav class="detail-nav">
+    <a href="../index.html">← Retour au portfolio</a>
+  </nav>
+
+  <!-- CONTENU PRINCIPAL -->
+  <main class="detail-projet">
+
+    <!-- 1. En-tête du projet -->
+    <header class="detail-header">
+      <h1>Conteneurisation avec Docker</h1>
+      <p class="detail-intro">
+        J’ai conçu et déployé une application de sondage en ligne entièrement 
+        conteneurisée à l’aide de Docker. Chaque service tourne dans son propre 
+        conteneur pour garantir modularité, montée en charge et facilité de maintenance.
+      </p>
+    </header>
+
+    <!-- 2. Contenu en deux colonnes -->
+    <section class="detail-content">
+
+      <!-- 2.1. Description textuelle -->
+      <article class="detail-text">
+        <h2>Architecture & Composants</h2>
+        <ul>
+          <li><strong>Poll (Flask – Python)</strong> : collecte des votes, envoi vers Redis.</li>
+          <li><strong>Redis</strong> : file d’attente pour stocker temporairement les votes.</li>
+          <li><strong>Worker (Java)</strong> : consommation des votes et stockage dans PostgreSQL.</li>
+          <li><strong>PostgreSQL</strong> : base de données persistante des votes.</li>
+          <li><strong>Result (Node.js)</strong> : lecture des votes et affichage des résultats.</li>
+        </ul>
+
+        <h2>Création des images Docker</h2>
+        <ul>
+          <li><strong>Poll</strong> : image officielle <code>python</code>, expose le port 80, lance <code>python app.py</code>.</li>
+          <li><strong>Result</strong> : image <code>node:alpine</code>, expose le port 80, <code>node_modules</code> exclu, lance <code>node server.js</code>.</li>
+          <li><strong>Worker</strong> : 
+            <ul>
+              <li>✦ <em>Builder</em> (<code>maven:3.9.6-eclipse-temurin-21-alpine</code>) : <code>mvn dependency:resolve</code>, <code>mvn package</code> → <code>worker-jar-with-dependencies.jar</code>.</li>
+              <li>✦ <em>Run</em> (<code>eclipse-temurin:21-jre-alpine</code>) : <code>java -jar worker-jar-with-dependencies.jar</code>.</li>
+            </ul>
+          </li>
+        </ul>
+
+        <h2>Résultat pour l’utilisateur</h2>
+        <ul>
+          <li><strong>Déploiement rapide</strong> via <code>docker-compose up</code>.</li>
+          <li><strong>Maintenance aisée</strong> : chaque service isolé.</li>
+          <li><strong>Scalabilité</strong> : possibilité de répliquer les conteneurs selon la charge.</li>
+        </ul>
+      </article>
+
+      <!-- 2.2. Galerie d’images -->
+       <aside class="detail-images">
+  <div class="mermaid">
+graph LR
+  Poll["Poll<br/>(Flask – Python)"]
+  Redis[(Redis queue)]
+  Worker["Worker<br/>(Java)"]
+  DB[(PostgreSQL)]
+  Result["Result<br/>(Node.js)"]
+
+  Poll --> Redis
+  Redis --> Worker
+  Worker --> DB
+  DB --> Result
+  </div>
+</aside>
+
+    </section>
+  </main>
+
+  <!-- FADE-IN AU CHARGEMENT -->
+   <!-- Bibliothèque Mermaid pour dessiner le schéma -->
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({ startOnLoad: true });</script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelector('.detail-projet').style.opacity = 1;
+    });
+  </script>
+</body>
+</html>

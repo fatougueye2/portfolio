@@ -1,0 +1,97 @@
+/* ---------------------------------------------------
+   Détail projet : container général
+   --------------------------------------------------- */
+.detail-projet {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* ---------------------------------------------------
+   Header du projet
+   --------------------------------------------------- */
+.detail-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.detail-header h1 {
+  color: #c71585;
+  font-size: 2.25rem;
+  margin-bottom: 0.5rem;
+}
+.detail-intro {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* ---------------------------------------------------
+   Contenu en deux colonnes
+   --------------------------------------------------- */
+.detail-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+/* Texte explicatif */
+.detail-text {
+  flex: 1 1 300px;
+}
+.detail-text h2 {
+  color: #8b0000;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+}
+.detail-text p,
+.detail-text ul {
+  line-height: 1.6;
+  color: #333;
+}
+.detail-text ul {
+  list-style: disc inside;
+  margin: 0.5rem 0;
+  padding-left: 1rem;
+}
+
+/* Galerie d’images */
+
+.detail-images figure {
+  margin: 0;
+  text-align: center;
+}
+
+.detail-images figcaption {
+  font-size: 0.75rem;
+  color: #666;
+  margin-top: 0.25rem;
+}
+
+/* ---------------------------------------------------
+   Agrandir les images de la galerie de détails
+   --------------------------------------------------- */
+.detail-images {
+  display: grid;
+  /* Passe de 140px à 300px de largeur min pour chaque colonne */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;            /* espace entre les images */
+  margin-top: 2rem;
+}
+
+.detail-images img {
+  width: 100%;          /* l’image prend tout l’espace de sa cellule */
+  max-width: 700px;     /* bornes supérieures si tu veux limiter */
+  height: auto;         /* conserve les proportions */
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+
+/* ---------------------------------------------------
+   Responsive : stack sur mobile
+   --------------------------------------------------- */
+@media (max-width: 600px) {
+  .detail-content {
+    flex-direction: column;
+  }
+}

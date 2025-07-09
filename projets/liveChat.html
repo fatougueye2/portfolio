@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Internet Relay Chat — Détails</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <!-- NAVIGATION BACK -->
+  <nav class="detail-nav">
+    <a href="../index.html">← Retour au portfolio</a>
+  </nav>
+
+  <!-- CONTENU DU PROJET -->
+  <main class="detail-projet">
+    <h1>Internet Relay Chat Client & Server</h1>
+    <p>
+      Développement complet d’un client et d’un serveur IRC pour la communication en temps réel :
+      sockets Node.js, gestion des canaux, authentification basique et interface React.
+    </p>
+    <img src="../assets/Capture-chat.png" alt="Vue du chat IRC">
+    <div class="languages">
+      <span class="lang" data-lang="nodejs"></span>
+      <span class="lang" data-lang="expressjs"></span>
+      <span class="lang" data-lang="reactjs"></span>
+    </div>
+  </main>
+
+  <!-- SCRIPT D’APPARITION -->
+  <script>
+    // Fade-in au chargement
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelector('.detail-projet').style.opacity = 1;
+    });
+  </script>
+</body>
+</html>

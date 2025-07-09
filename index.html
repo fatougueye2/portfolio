@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio de Fatou kiné Gueye</title>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-p+XQn6T+VsnCH1Ub4cQrVlI5JYo3bB5q2KG6/bC2DqN7YFkt4kWbeT/J4JVl3jCells6Vw5gWEdkw77jAcD8Mg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+
 <body>
   <!-- Preloader -->
   <div id="loader">
@@ -15,24 +20,62 @@
     <span class="dot"></span>
   </div>
 
-  <nav>
-    <ul>
-      <li><a href="#accueil">Accueil</a></li>
-      <li><a href="#a-propos">À propos</a></li>
-      <li><a href="#projets">Projets</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+<nav id="main-nav">
+  <ul>
+    <li>
+      <a href="#accueil" title="Accueil">
+        <img src="assets/dog.png" alt="Accueil" class="sidebar-icon">
+        <span class="nav-text">Accueil</span>
+      </a>
+    </li>
+    <li>
+      <a href="#a-propos" title="À propos">
+        <img src="assets/user.png" alt="À propos" class="sidebar-icon">
+        <span class="nav-text">À propos</span>
+      </a>
+    </li>
+    <li>
+      <a href="#projets" title="Projets">
+        <img src="assets/folder.png" alt="Projets" class="sidebar-icon">
+        <span class="nav-text">Projets</span>
+      </a>
+    </li>
+    <li>
+      <a href="#contact" title="Contact">
+        <img src="assets/chat.png" alt="Contact" class="sidebar-icon">
+        <span class="nav-text">Contact</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
 
   <header class="hero" id="accueil">
     <img src="assets/IMG_1881.jpeg" alt="pdp" class="photo-profil">
     <h1>Fatou-kiné Gueye</h1>
     <p class="slogan">Cybersecurity Apprentice</p>
+
+    <!--téléchargement des CV -->
+    <p class="btn-cv">
+      <a href="assets/FatouGueyeCvAltCs.pdf" download>
+        📄 Télécharger mon CV (FR)
+      </a>
+      |
+      <a href="assets/FatouGueyeCvAngCs.pdf" download>
+        📄 Download my CV (EN)
+      </a>
+    </p>
   </header>
+
+
 
   <section id="a-propos">
     <h2>À propos de moi</h2>
-    <p>Développeuse web Front-end passionnée, je crée des interfaces modernes, intuitives et esthétiques. J'accorde une grande importance à l'expérience utilisateur, aux détails et à la performance.</p>
+    <p>Développeuse en formation avec des compétences en programmation
+      (Python, Java, etc.), je me spécialise en cybersécurité dans le cadre
+      d’un contrat d’apprentissage (1 semaine en formation / 3 semaines
+      en entreprise). Je cherche à appliquer mes connaissances en
+      développement au service de la sécurité des systèmes informatiques.</p>
   </section>
 
   <section id="projets">
@@ -115,23 +158,7 @@
     </form>
   </section>
 
-  <script>
-    // Cacher le preloader une fois la page complètement chargée
-    window.addEventListener('load', function() {
-      document.getElementById('loader').style.display = 'none';
-    });
-
-    // Apparition au scroll
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.style.opacity = 1;
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('section').forEach(sec => {
-      sec.style.opacity = 0;
-      sec.style.transition = 'opacity 1s ease-in-out';
-      observer.observe(sec);
-    });
-  </script>
+  <script src="main.js" defer></script>
 </body>
+
 </html>

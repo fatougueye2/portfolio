@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Trelltech — Application de gestion de projet</title>
+  <link rel="stylesheet" href="../projets.css">
+</head>
+<body>
+
+  <!-- NAVIGATION “Retour” -->
+  <nav class="detail-nav">
+    <a href="../index.html">← Retour au portfolio</a>
+  </nav>
+
+  <main class="detail-projet">
+
+    <!-- 1. En‐tête du projet -->
+    <header class="detail-header">
+      <h1>Trelltech</h1>
+      <p class="detail-intro">
+        Application web (ou desktop/mobile) de gestion de projet, développée avec l’API Trello
+        pour simplifier la création et le suivi de workspaces, tableaux, listes et cartes.  
+        L’accent est mis sur la fluidité UX/UI, la robustesse de l’architecture et la qualité du code.  
+      </p>
+    </header>
+
+    <!-- 2. Contenu en deux colonnes -->
+    <section class="detail-content">
+
+      <!-- 2.1. Description textuelle -->
+      <article class="detail-text">
+
+        <h2>Fonctionnalités principales</h2>
+        <ul>
+          <li><strong>Espaces de travail</strong> : création / mise à jour / suppression / affichage.</li>
+          <li><strong>Tableaux</strong> : choix du template (Kanban…), création / modification / suppression / affichage.</li>
+          <li><strong>Listes</strong> : gestion complète (CRUD).</li>
+          <li><strong>Cartes</strong> : création, édition, suppression, affichage au sein d’une liste.</li>
+          <li><strong>Attribution</strong> : assignation de membres à chaque carte.</li>
+        </ul>
+
+        <h2>Conception & Technologies</h2>
+        <ul>
+          <li>Intégration de l’API Trello (authentification, endpoints, Webhooks).</li>
+          <li>Framework choisi : [React / Vue / Flutter] (à compléter selon ton implémentation).</li>
+          <li>Tests : stratégie de tests unitaires et d’intégration avec [Jest / Mocha / JUnit].</li>
+          <li>Documentation : README détaillé, guide d’installation et diagrammes UML.</li>
+        </ul>
+
+        <h2>UX & UI</h2>
+        <p>
+          Création d’une identité visuelle cohérente (couleurs, icônes, typographie),  
+          respect des guidelines Material Design (ou équivalent),  
+          navigation ergonomique et retour utilisateur en temps réel.
+        </p>
+
+      </article>
+
+      <!-- 2.2. Galerie d’images -->
+      <aside class="detail-images">
+        <figure>
+          <img src="../assets/Capture d'écran 2025-04-07 152247.png" alt="Capture d’écran édition de carte">
+          <figcaption>Édition d’une carte et assignation d’utilisateurs</figcaption>
+        </figure>
+        <!--<figure>
+          <img src="../assets/trelltech-edit-card.png" alt="Capture d’écran du dashboard Trelltech">
+          <figcaption></figcaption>
+        </figure>
+      </aside>
+    -->
+    </section>
+  </main>
+
+  <!-- Fade‐in au chargement -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelector('.detail-projet').style.opacity = 1;
+    });
+  </script>
+</body>
+</html>
