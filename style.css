@@ -5,6 +5,7 @@ body {
   background: #fffafc;
   color: #4b3a3a;
 }
+
 /* Preloader */
 #loader {
   position: fixed;
@@ -18,6 +19,7 @@ body {
   justify-content: center;
   z-index: 999;
 }
+
 #loader .dot {
   width: 15px;
   height: 15px;
@@ -26,11 +28,26 @@ body {
   background: #ffc0cb;
   animation: blink 1.4s infinite both;
 }
-#loader .dot:nth-child(2) { animation-delay: 0.2s; }
-#loader .dot:nth-child(3) { animation-delay: 0.4s; }
+
+#loader .dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+#loader .dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
 @keyframes blink {
-  0%, 80%, 100% { opacity: 0; }
-  40% { opacity: 1; }
+
+  0%,
+  80%,
+  100% {
+    opacity: 0;
+  }
+
+  40% {
+    opacity: 1;
+  }
 }
 
 nav {
@@ -51,47 +68,57 @@ nav ul {
   margin: 0;
   padding: 0;
 }
+
 nav a {
   text-decoration: none;
   color: #4b3a3a;
   font-weight: 500;
   transition: color 0.3s;
 }
+
 nav a:hover {
   color: #c71585;
 }
+
 .hero {
   text-align: center;
   padding: 6em 1em 4em;
   margin-top: 60px;
 }
+
 .photo-profil {
   width: 150px;
   height: 150px;
   border-radius: 50%;
   border: 3px solid #ffc0cb;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
 h1 {
   font-size: 2.5em;
   color: #c71585;
   margin: 0.5em 0;
 }
+
 .slogan {
   font-size: 1.2em;
   font-style: italic;
   color: #a0522d;
 }
+
 section {
   padding: 4em 2em;
   opacity: 0;
 }
+
 section:nth-of-type(odd) {
   background: #fffafc;
 }
+
 section:nth-of-type(even) {
   background: #fff;
 }
+
 h2 {
   font-size: 2em;
   color: #8b0000;
@@ -99,33 +126,40 @@ h2 {
   padding-left: 1em;
   margin-bottom: 1em;
 }
+
 .galerie-projets {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2em;
 }
+
 .carte-projet {
   background: #fff;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s;
 }
+
 .carte-projet:hover {
   transform: translateY(-5px);
 }
+
 .carte-projet img {
   width: 100%;
   display: block;
 }
+
 .carte-projet h3 {
   margin: 0.5em 1em;
   color: #c71585;
 }
+
 .carte-projet p {
   margin: 0 1em 1em;
   color: #555;
 }
+
 #contact .email {
   display: inline-block;
   background: #ffe4e1;
@@ -133,12 +167,14 @@ h2 {
   border-radius: 20px;
   margin-top: 0.5em;
 }
+
 .form-contact {
   margin-top: 1em;
   display: flex;
   flex-direction: column;
   gap: 1em;
 }
+
 .form-contact input,
 .form-contact textarea {
   padding: 0.75em;
@@ -147,6 +183,7 @@ h2 {
   width: 100%;
   font-size: 1em;
 }
+
 .form-contact button {
   background: #c71585;
   color: #fff;
@@ -157,20 +194,29 @@ h2 {
   cursor: pointer;
   transition: background 0.3s;
 }
+
 .form-contact button:hover {
   background: #a0522d;
 }
+
 @media (max-width: 768px) {
-  nav { justify-content: center; }
-  .hero { padding: 6em 1em 3em; }
+  nav {
+    justify-content: center;
+  }
+
+  .hero {
+    padding: 6em 1em 3em;
+  }
 }
 
 /* Badges de languages */
+/* Points de language */
 .languages {
   display: flex;
   gap: 0.5em;
   margin: 0.5em 1em;
 }
+
 .lang {
   width: 12px;
   height: 12px;
@@ -179,16 +225,62 @@ h2 {
   position: relative;
   cursor: default;
 }
-.lang.html { background: #e34c26; }
-.lang.css  { background: #264de4; }
-.lang.js   { background: #f0db4f; }
-.lang.nodejs    { background: #68a063; }
-.lang.react     { background: #61dafb; }
-.lang.docker    { background: #2496ed; }
-.lang.bash      { background: #4eAA25; }
-.lang.virtualbox{ background: #183A61; }
 
-/* Tooltip au hover */
+/* Couleurs par langage via l'attribut data-lang */
+.lang[data-lang="NodeJs"] {
+  background: #70a861;
+}
+
+.lang[data-lang="ExpressJs"] {
+  background: #000000;
+}
+
+.lang[data-lang="ReactJs"] {
+  background: #61dafb;
+}
+
+.lang[data-lang="Dart"] {
+  background: #0175c2;
+}
+
+.lang[data-lang="C++"] {
+  background: #00599c;
+}
+
+.lang[data-lang="Cmake"] {
+  background: #064f8c;
+}
+
+.lang[data-lang="Java"] {
+  background: #b07219;
+}
+
+.lang[data-lang="JavaFX"] {
+  background: #2c2255;
+}
+
+.lang[data-lang="JavaScript"] {
+  background: #f7df1e;
+}
+
+.lang[data-lang="Dockerfile"] {
+  background: #2496ed;
+}
+
+.lang[data-lang="Bash"] {
+  background: #4eAA25;
+}
+
+.lang[data-lang="VirtualBox"] {
+  background: #183A61;
+}
+
+.lang[data-lang="CSS"] {
+  background: #5599fe;
+}
+
+
+/* Tooltip au hover inchangé */
 .lang::after {
   content: attr(data-lang);
   position: absolute;
@@ -205,6 +297,7 @@ h2 {
   transition: opacity 0.2s;
   pointer-events: none;
 }
+
 .lang:hover::after {
   opacity: 1;
 }
