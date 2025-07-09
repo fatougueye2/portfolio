@@ -164,3 +164,47 @@ h2 {
   nav { justify-content: center; }
   .hero { padding: 6em 1em 3em; }
 }
+
+/* Badges de languages */
+.languages {
+  display: flex;
+  gap: 0.5em;
+  margin: 0.5em 1em;
+}
+.lang {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  cursor: default;
+}
+.lang.html { background: #e34c26; }
+.lang.css  { background: #264de4; }
+.lang.js   { background: #f0db4f; }
+.lang.nodejs    { background: #68a063; }
+.lang.react     { background: #61dafb; }
+.lang.docker    { background: #2496ed; }
+.lang.bash      { background: #4eAA25; }
+.lang.virtualbox{ background: #183A61; }
+
+/* Tooltip au hover */
+.lang::after {
+  content: attr(data-lang);
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  padding: 2px 6px;
+  border-radius: 3px;
+  white-space: nowrap;
+  font-size: 0.75em;
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+.lang:hover::after {
+  opacity: 1;
+}
