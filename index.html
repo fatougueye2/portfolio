@@ -23,13 +23,6 @@
 </head>
 
 <body>
-  <!-- Preloader -->
-  <div id="loader">
-    <span class="dot"></span>
-    <span class="dot"></span>
-    <span class="dot"></span>
-  </div>
-
   <nav id="main-nav">
     <ul>
       <li>
@@ -103,6 +96,63 @@
     </div>
   </div>
 </section>
+
+
+<section id="experience" class="experience-section">
+  <div class="exp-header">
+    <h2>Mon parcours</h2>
+    <p class="exp-subtitle">
+      Du front-end à la cybersécurité, découvrez mes missions et responsabilités.
+    </p>
+  </div>
+
+  <!-- Bloc 1 : carousel à gauche, texte à droite -->
+  <div class="exp-block exp-block--reverse">
+    <div class="carousel-wrapper">
+      <button class="carousel-btn prev">‹</button>
+      <div class="carousel-track">
+        <div class="exp-card" style="background-image:url('assets/logo-cyber.png')">
+          <span class="exp-label">Apprentie Cybersécurité</span>
+        </div>
+        <div class="exp-card" style="background-image:url('assets/logo-frontend.png')">
+          <span class="exp-label">Stagiaire Front-end</span>
+        </div>
+      </div>
+      <button class="carousel-btn next">›</button>
+    </div>
+    <div class="exp-text">
+      <h3>Expériences Informatiques</h3>
+      <p>
+        J’ai travaillé sur pipelines CI/CD, sécurisation de conteneurs Docker et
+        administration de réseaux en OpenBSD.
+      </p>
+    </div>
+  </div>
+
+  <!-- Bloc 2 : texte à gauche, carousel à droite -->
+  <div class="exp-block exp-block--reverse">
+    <div class="exp-text-bottom">
+      <h3>Autres expériences</h3>
+      <p>
+        Bénévolat associatif, vente en boutique et ateliers numériques pour
+        les seniors.
+      </p>
+    </div>
+    <div class="carousel-wrapper">
+      <button class="carousel-btn prev">‹</button>
+      <div class="carousel-track">
+        <div class="exp-card" style="background-image:url('assets/logo-asso.png')">
+          <span class="exp-label">Bénévolat Associatif</span>
+        </div>
+        <div class="exp-card" style="background-image:url('assets/logo-vente.png')">
+          <span class="exp-label">Conseillère de Vente</span>
+        </div>
+      </div>
+      <button class="carousel-btn next">›</button>
+    </div>
+  </div>
+</section>
+
 
 
  <section id="projets">
