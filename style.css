@@ -506,6 +506,8 @@ h2 {
 .lang[data-lang="virtualbox" i]  { background: #183a61; }
 .lang[data-lang="css" i]         { background: #5599fe; }
 .lang[data-lang="trello" i]         { background: #5599fe; }
+.lang[data-lang="mongodb" i]         { background: #000000; }
+
 
 
 /* Tooltip on hover */
@@ -668,6 +670,8 @@ h2 {
 .badge.nodejs { background: #70a861; color: #fff; }
 .badge.reactjs { background: #61dafb; color: #fff; }
 .badge.expressjs { background: #000000; color: #fff; }
+.badge.mongodb { background: #000000; color: #4eaa25; }
+
 
 
 /* Description */
