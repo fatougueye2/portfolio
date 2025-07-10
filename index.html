@@ -10,6 +10,16 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     integrity="sha512-p+XQn6T+VsnCH1Ub4cQrVlI5JYo3bB5q2KG6/bC2DqN7YFkt4kWbeT/J4JVl3jCells6Vw5gWEdkw77jAcD8Mg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link
+  href="https://fonts.googleapis.com/css2?
+    family=Poppins:wght@600;700&
+    family=Open+Sans:wght@300;400&
+    family=Pacifico&
+    display=swap"
+  rel="stylesheet"
+/>
+
+
 </head>
 
 <body>
@@ -20,38 +30,37 @@
     <span class="dot"></span>
   </div>
 
-<nav id="main-nav">
-  <ul>
-    <li>
-      <a href="#accueil" title="Accueil">
-        <img src="assets/dog.png" alt="Accueil" class="sidebar-icon">
-        <span class="nav-text">Accueil</span>
-      </a>
-    </li>
-    <li>
-      <a href="#a-propos" title="À propos">
-        <img src="assets/user.png" alt="À propos" class="sidebar-icon">
-        <span class="nav-text">À propos</span>
-      </a>
-    </li>
-    <li>
-      <a href="#projets" title="Projets">
-        <img src="assets/folder.png" alt="Projets" class="sidebar-icon">
-        <span class="nav-text">Projets</span>
-      </a>
-    </li>
-    <li>
-      <a href="#contact" title="Contact">
-        <img src="assets/chat.png" alt="Contact" class="sidebar-icon">
-        <span class="nav-text">Contact</span>
-      </a>
-    </li>
-  </ul>
-</nav>
+  <nav id="main-nav">
+    <ul>
+      <li>
+        <a href="#accueil" title="Accueil">
+          <img src="assets/dog.png" alt="Accueil" class="sidebar-icon">
+          <span class="nav-text">Accueil</span>
+        </a>
+      </li>
+      <li>
+        <a href="#a-propos" title="À propos">
+          <img src="assets/user.png" alt="À propos" class="sidebar-icon">
+          <span class="nav-text">À propos</span>
+        </a>
+      </li>
+      <li>
+        <a href="#projets" title="Projets">
+          <img src="assets/folder.png" alt="Projets" class="sidebar-icon">
+          <span class="nav-text">Projets</span>
+        </a>
+      </li>
+      <li>
+        <a href="#contact" title="Contact">
+          <img src="assets/chat.png" alt="Contact" class="sidebar-icon">
+          <span class="nav-text">Contact</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
 
 
   <header class="hero" id="accueil">
-    <img src="assets/IMG_1881.jpeg" alt="pdp" class="photo-profil">
     <h1>Fatou-kiné Gueye</h1>
     <p class="slogan">Cybersecurity Apprentice</p>
 
@@ -69,82 +78,371 @@
 
 
 
-  <section id="a-propos">
-    <h2>À propos de moi</h2>
-    <p>Développeuse en formation avec des compétences en programmation
-      (Python, Java, etc.), je me spécialise en cybersécurité dans le cadre
-      d’un contrat d’apprentissage (1 semaine en formation / 3 semaines
-      en entreprise). Je cherche à appliquer mes connaissances en
-      développement au service de la sécurité des systèmes informatiques.</p>
-  </section>
-
-  <section id="projets">
-    <h2>Mes projets</h2>
-    <div class="galerie-projets">
-      <!-- Internet Relay Chat -->
-      <div class="carte-projet">
-        <a href="projets/liveChat.html">
-          <img src="assets/Capture d'écran 2025-07-09 140500.png" alt="Chat Client et Serveur">
-          <h3>Internet Relay Chat Client & Server</h3>
-          <p>Client et serveur IRC développés pour la communication en temps réel.</p>
-          <div class="languages">
-            <span class="lang NodeJs" data-lang="NodeJs"></span>
-            <span class="lang ExpressJs" data-lang="ExpressJs"></span>
-            <span class="lang ReactJs" data-lang="ReactJs"></span>
-          </div>
-        </a>
-      </div>
-      <!-- Application de gestion -->
-      <div class="carte-projet">
-        <a href="projets/gestionProjets.html">
-          <img src="assets/Trello-Logo-2016-2021.jpg" alt="Gestion de Projets">
-          <h3>Application de gestion</h3>
-          <p>Outil de suivi avec tableau de bord interactif et design épuré.</p>
-          <div class="languages">
-            <span class="lang Dart" data-lang="Dart"></span>
-            <span class="lang CSS" data-lang="CSS"></span>
-            <span class="lang JavaScript" data-lang="JavaScript"></span>
-          </div>
-        </a>
-      </div>
-      <!-- Docker -->
-      <div class="carte-projet">
-        <a href="projets/docker.html">
-          <img src="assets/386-3866551_the-logo-of-docker-is-a-cute-whale.png" alt="Docker Setup">
-          <h3>Docker</h3>
-          <p>Conteneurisation d’applications avec Docker et scripts Bash.</p>
-          <div class="languages">
-            <span class="lang docker" data-lang="Dockerfile"></span>
-            <span class="lang bash" data-lang="Bash"></span>
-          </div>
-        </a>
-      </div>
-      <!-- Pacman -->
-      <div class="carte-projet">
-        <a href="projets/pacman.html">
-          <img src="assets/autocollants-pac-man-et-les-fantomes.png" alt="Jeu Pacman">
-          <h3>Pacman</h3>
-          <p>Reprise du classique Pacman en JavaScript pour le web.</p>
-          <div class="languages">
-            <span class="lang Java" data-lang="Java"></span>
-            <span class="lang JavaFX" data-lang="JavaFX"></span>
-          </div>
-        </a>
-      </div>
-      <!-- VirtualBox -->
-      <div class="carte-projet">
-        <a href="projets/virtualBox.html">
-          <img src="assets/virtualBox.webp" alt="Machines Virtuelles">
-          <h3>Virtual Machines</h3>
-          <p>Automatisation de VM avec VirtualBox et scripts Bash.</p>
-          <div class="languages">
-            <span class="lang bash" data-lang="Bash"></span>
-            <span class="lang virtualbox" data-lang="VirtualBox"></span>
-          </div>
-        </a>
+<section id="a-propos" class="about-section">
+  <div class="about-container">
+    <!-- Colonne image -->
+    <div class="about-image">
+      <img src="assets/IMG_1881.jpeg" alt="Photo de Fatou Gueye">
+    </div>
+    <!-- Colonne texte -->
+    <div class="about-content">
+      <h2>À propos de moi</h2>
+      <p class="subtitle">Fatou-kiné Gueye – Cybersecurity Apprentice</p>
+      <p class="description">
+        Développeuse Web Front-end en apprentissage, je crée des expériences
+        utilisateur modernes et sécurisées. Passionnée par la cybersécurité,
+        j’allie rigueur et créativité pour bâtir des interfaces à la fois
+        esthétiques et robustes.
+      </p>
+      <div class="social-icons">
+        <a href="https://behance.net/…" target="_blank" aria-label="Behance"><i class="fab fa-behance"></i></a>
+        <a href="https://dribbble.com/…" target="_blank" aria-label="Dribbble"><i class="fab fa-dribbble"></i></a>
+        <a href="https://twitter.com/…" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="https://linkedin.com/in/…" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
+
+ <section id="projets">
+  <h2>Mes projets</h2>
+  <div class="galerie-projets">
+    <!-- Internet Relay Chat -->
+    <div class="carte-projet" data-modal="modal-irc">
+      <img src="assets/Capture d'écran 2025-07-09 140500.png" alt="Chat IRC">
+      <h3>Internet Relay Chat</h3>
+      <p>Client & serveur IRC temps réel.</p>
+      <div class="languages">
+        <span class="lang" data-lang="NodeJs"></span>
+        <span class="lang" data-lang="ExpressJs"></span>
+        <span class="lang" data-lang="ReactJs"></span>
+      </div>
+    </div>
+
+    <!-- Application de gestion -->
+    <div class="carte-projet" data-modal="modal-gestion">
+      <img src="assets/Trello-Logo-2016-2021.jpg" alt="Gestion Projets">
+      <h3>Application de gestion</h3>
+      <p>Tableau de bord interactif.</p>
+      <div class="languages">
+        <span class="lang" data-lang="Dart"></span>
+        <span class="lang" data-lang="CSS"></span>
+        <span class="lang" data-lang="JavaScript"></span>
+        <span class="lang" data-lang="Trello"></span>
+
+      </div>
+    </div>
+
+    <!-- Docker -->
+    <div class="carte-projet" data-modal="modal-docker">
+      <img src="assets/386-3866551_the-logo-of-docker-is-a-cute-whale.png" alt="Docker">
+      <h3>Containerisation Docker</h3>
+      <p>Microservices & scripts Bash.</p>
+      <div class="languages">
+        <span class="lang" data-lang="Docker"></span>
+        <span class="lang" data-lang="Bash"></span>
+      </div>
+    </div>
+
+    <!-- Pacman -->
+    <div class="carte-projet" data-modal="modal-pacman">
+      <img src="assets/autocollants-pac-man-et-les-fantomes.png" alt="Pacman">
+      <h3>Pacman</h3>
+      <p>Reprise du jeu en JavaScript.</p>
+      <div class="languages">
+        <span class="lang" data-lang="Java"></span>
+        <span class="lang" data-lang="JavaFX"></span>
+      </div>
+    </div>
+
+    <!-- VirtualBox -->
+    <div class="carte-projet" data-modal="modal-vm">
+      <img src="assets/virtualBox.webp" alt="VM VirtualBox">
+      <h3>Machines Virtuelles</h3>
+      <p>Automation VirtualBox via Bash.</p>
+      <div class="languages">
+        <span class="lang" data-lang="Bash"></span>
+        <span class="lang" data-lang="VirtualBox"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================
+     Modals de chaque projet
+     ========================= -->
+<!-- Modal IRC Client & Serveur -->
+<div id="modal-irc" class="modal">
+  <div class="modal-content vm-modal">
+    <button class="modal-close">&times;</button>
+
+    <!-- En-tête -->
+    <div class="vm-header">
+      <img src="assets/irc-icon.png" alt="Logo IRC" class="vm-icon">
+      <h2>Internet Relay Chat</h2>
+      <p class="vm-status">Terminé</p>
+    </div>
+
+    <!-- Badges Langages & Outils -->
+   <div class="vm-badges">
+      <span class="badge nodejs"><i class="fab fa-linux"></i> NodeJs</span>
+      <span class="badge expressjs"><i class="fas fa-server"></i> ExpressJs</span>
+      <span class="badge reactjs"><i class="fas fa-server"></i> ReactJs</span>
+    </div>
+
+    <!-- Description courte -->
+    <p class="vm-desc">
+      Système de chat temps réel inspiré d’IRC :  
+      serveur Node.js/Express + Socket.IO et client ReactJS  
+      communiquant via WebSocket, avec persistance salons & messages.
+    </p>
+
+    <!-- Points positifs -->
+    <h3>Points positifs :</h3>
+    <ul class="vm-points vm-positive">
+      <li><i class="fas fa-check-circle"></i> Communication temps-réel via Socket.IO</li>
+      <li><i class="fas fa-check-circle"></i> Interface ReactJS réactive</li>
+      <li><i class="fas fa-check-circle"></i> Implémentation des commandes IRC (JOIN, PRIVMSG…)</li>
+    </ul>
+
+    <!-- À améliorer -->
+    <h3>À améliorer :</h3>
+    <ul class="vm-points vm-negative">
+      <li><i class="fas fa-times-circle"></i> Ajouter authentification & rôles utilisateurs</li>
+      <li><i class="fas fa-times-circle"></i> Support multiserveurs et canaux privés</li>
+    </ul>
+
+    <!-- Note perso -->
+    <p class="vm-note">
+      Prochaine étape : stockage en base de données (MongoDB/Redis) et tests E2E.
+    </p>
+
+    <!-- Bouton GitHub -->
+    <a href="https://github.com/ton-repo/IRC-Project" target="_blank" class="vm-cta">
+      <i class="fab fa-github"></i> Voir sur GitHub
+    </a>
+
+  </div>
+</div>
+
+
+<!-- Modal Trelltech (Application de gestion) -->
+<div id="modal-gestion" class="modal">
+  <div class="modal-content vm-modal">
+    <button class="modal-close">&times;</button>
+
+    <!-- En-tête -->
+    <div class="vm-header">
+      <img src="assets/Trello-Logo-2016-2021.jpg"
+           alt="Logo Trelltech" class="vm-icon">
+      <h2>Trelltech</h2>
+      <p class="vm-status">Terminé</p>
+    </div>
+
+    <!-- Badges Langages & Outils -->
+   <div class="vm-badges">
+      <span class="badge dart"><i class="fab fa-linux"></i> Dart</span>
+      <span class="badge css"><i class="fas fa-server"></i> css</span>
+      <span class="badge javascript"><i class="fas fa-server"></i> JavaScript</span>
+      <span class="badge trello"><i class="fas fa-server"></i> TrelloApi</span>
+    </div>
+
+    <!-- Description -->
+    <p class="vm-desc">
+      Application de gestion de projets intégrée à l’API Trello :  
+      CRUD workspaces, tableaux, listes et cartes,  
+      assignation de membres, et UI/UX fluide.
+    </p>
+
+    <!-- Points positifs -->
+    <h3>Points positifs :</h3>
+    <ul class="vm-points vm-positive">
+      <li><i class="fas fa-check-circle"></i> Intégration complète de l’API Trello</li>
+      <li><i class="fas fa-check-circle"></i> Interface réactive avec React</li>
+      <li><i class="fas fa-check-circle"></i> Gestion fine des autorisations utilisateurs</li>
+    </ul>
+
+    <!-- À améliorer -->
+    <h3>À améliorer :</h3>
+    <ul class="vm-points vm-negative">
+      <li><i class="fas fa-times-circle"></i> Ajouter des tests end-to-end</li>
+      <li><i class="fas fa-times-circle"></i> Optimiser la mise en cache des données</li>
+    </ul>
+
+    <!-- Note perso -->
+    <p class="vm-note">
+      Prochaine étape : mobile first et PWA pour accès hors-ligne.
+    </p>
+
+    <!-- Bouton GitHub -->
+    <a href="https://github.com/ton-repo/trelltech" target="_blank" class="vm-cta">
+      <i class="fab fa-github"></i> Voir sur GitHub
+    </a>
+  </div>
+</div>
+
+
+<!-- Modal « Conteneurisation Docker » (identique au style VM) -->
+<div id="modal-docker" class="modal">
+  <div class="modal-content vm-modal">
+    <button class="modal-close">&times;</button>
+
+    <!-- En-tête avec logo et statut -->
+    <div class="vm-header">
+      <img src="assets/386-3866551_the-logo-of-docker-is-a-cute-whale.png"
+           alt="Logo Docker" class="vm-icon">
+      <h2>Conteneurisation Docker</h2>
+      <p class="vm-status">Terminé</p>
+    </div>
+
+    <!-- Badges Langages & Outils -->
+    <div class="vm-badges">
+      <span class="badge docker"><i class="fab fa-linux"></i> Docker</span>
+      <span class="badge bash"><i class="fas fa-server"></i> Bash</span>
+    </div>
+
+    <!-- Description -->
+    <p class="vm-desc">
+      J’ai conteneurisé une application de sondage en micro-services (Poll, Redis, Worker, PostgreSQL, Result)  
+      et automatisé son déploiement avec Docker &amp; docker-compose.
+    </p>
+
+    <!-- Points positifs -->
+    <h3>Points positifs :</h3>
+    <ul class="vm-points vm-positive">
+      <li><i class="fas fa-check-circle"></i> Architecture 100 % conteneurisée</li>
+      <li><i class="fas fa-check-circle"></i> Déploiement en un seul “docker-compose up”</li>
+      <li><i class="fas fa-check-circle"></i> Isolations et mises à l’échelle simples</li>
+    </ul>
+
+    <!-- À améliorer -->
+    <h3>À améliorer :</h3>
+    <ul class="vm-points vm-negative">
+      <li><i class="fas fa-times-circle"></i> Ajouter des health-checks pour chaque service</li>
+      <li><i class="fas fa-times-circle"></i> Mettre en place un réseau privé Docker dédié</li>
+    </ul>
+
+    <!-- Note perso -->
+    <p class="vm-note">
+      Prochaine étape : intégrer des probes Kubernetes et un Helm chart.
+    </p>
+
+    <!-- Bouton GitHub -->
+    <a href="https://github.com/ton-repo/docker-survey" target="_blank" class="vm-cta">
+      <i class="fab fa-github"></i> Voir sur GitHub
+    </a>
+  </div>
+</div>
+
+
+<!-- Modal Pacman -->
+<div id="modal-pacman" class="modal">
+  <div class="modal-content vm-modal">
+    <button class="modal-close">&times;</button>
+
+    <!-- En-tête -->
+    <div class="vm-header">
+      <img src="assets/autocollants-pac-man-et-les-fantomes.png"
+           alt="Logo Pacman" class="vm-icon">
+      <h2>Pacman – Java &amp; JavaFX</h2>
+      <p class="vm-status">Terminé</p>
+    </div>
+
+    <!-- Badges Langages & Outils -->
+     <div class="vm-badges">
+      <span class="badge java"><i class="fab fa-linux"></i> Java</span>
+      <span class="badge javafx"><i class="fas fa-server"></i> JavaFX</span>
+    </div>
+
+    <!-- Description -->
+    <p class="vm-desc">
+      Clone du jeu Pacman en Java avec JavaFX : gestion du labyrinthe, déplacements,
+      IA des fantômes, score et gestion des vies.
+    </p>
+
+    <!-- Points positifs -->
+    <h3>Points positifs :</h3>
+    <ul class="vm-points vm-positive">
+      <li><i class="fas fa-check-circle"></i> Moteur de jeu fonctionnel avec collisions</li>
+      <li><i class="fas fa-check-circle"></i> IA basique pour les fantômes</li>
+      <li><i class="fas fa-check-circle"></i> Affichage du score et des vies restantes</li>
+    </ul>
+
+    <!-- À améliorer -->
+    <h3>À améliorer :</h3>
+    <ul class="vm-points vm-negative">
+      <li><i class="fas fa-times-circle"></i> Ajouter des animations plus fluides</li>
+      <li><i class="fas fa-times-circle"></i> Créer plusieurs niveaux de difficulté</li>
+      <li><i class="fas fa-times-circle"></i> Optimiser la détection des collisions</li>
+    </ul>
+
+    <!-- Note perso -->
+    <p class="vm-note">
+      Je prévois d’ajouter un système de power-ups et d’approfondir l’IA pour varier les comportements.
+    </p>
+
+    <!-- Bouton GitHub -->
+    <a href="https://github.com/fatougueye2/T-JAV-501-PAR-33/tree/main/JavaProject"
+       target="_blank"
+       class="vm-cta">
+      <i class="fab fa-github"></i> Voir sur GitHub
+    </a>
+  </div>
+</div>
+
+
+<!-- Modal Machines Virtuelles -->
+
+<div id="modal-vm" class="modal">
+  <div class="modal-content vm-modal">
+    <button class="modal-close">&times;</button>
+
+    <!-- En-tête avec icône (facultatif) -->
+    <div class="vm-header">
+      <img src="assets/virtualBox.webp" alt="VM Icone" class="vm-icon">
+      <h2>Machines Virtuelles</h2>
+      <p class="vm-status">Terminé</p>
+    </div>
+
+    <!-- Badges langages/outils -->
+    <div class="vm-badges">
+      <span class="badge bash"><i class="fab fa-linux"></i> Bash</span>
+      <span class="badge virtualBox"><i class="fas fa-server"></i> VBoxManage</span>
+    </div>
+
+    <!-- Description -->
+    <p class="vm-desc">
+      Automatisation de 4 VMs sous VirtualBox via Bash :  
+      passerelle (OpenBSD 7.6), serveur web (FreeBSD 14),  
+      clients employé & administrateur (Debian 12).
+    </p>
+
+    <!-- Points positifs -->
+    <h3>Points positifs :</h3>
+    <ul class="vm-points vm-positive">
+      <li><i class="fas fa-check-circle"></i> Scripts reproductibles et versionnés</li>
+      <li><i class="fas fa-check-circle"></i> Provisioning rapide headless</li>
+    </ul>
+
+    <!-- Points à améliorer -->
+    <h3>À améliorer :</h3>
+    <ul class="vm-points vm-negative">    
+        <li><i class="fas fa-check-circle"></i> Isolation réseau admin</li>
+    </ul>
+
+    <!-- Note perso -->
+    <p class="vm-note">
+      Je compte intégrer ces améliorations prochainement.
+    </p>
+
+    <!-- Bouton GitHub -->
+    <a href="https://github.com/ton-repo/vms" target="_blank" class="vm-cta">
+      <i class="fab fa-github"></i> Voir sur GitHub
+    </a>
+  </div>
+</div>
+
 
   <section id="contact">
     <h2>Contact</h2>

@@ -3,33 +3,90 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Internet Relay Chat — Détails</title>
-  <link rel="stylesheet" href="../style.css">
+  <title>IRC Client & Serveur — Détails</title>
+  <link rel="stylesheet" href="../projets.css">
 </head>
 <body>
-  <!-- NAVIGATION BACK -->
+
+  <!-- NAVIGATION “Retour” -->
   <nav class="detail-nav">
     <a href="../index.html">← Retour au portfolio</a>
   </nav>
 
-  <!-- CONTENU DU PROJET -->
   <main class="detail-projet">
-    <h1>Internet Relay Chat Client & Server</h1>
-    <p>
-      Développement complet d’un client et d’un serveur IRC pour la communication en temps réel :
-      sockets Node.js, gestion des canaux, authentification basique et interface React.
-    </p>
-    <img src="../assets/Capture-chat.png" alt="Vue du chat IRC">
-    <div class="languages">
-      <span class="lang" data-lang="nodejs"></span>
-      <span class="lang" data-lang="expressjs"></span>
-      <span class="lang" data-lang="reactjs"></span>
-    </div>
+
+    <!-- 1. En-tête du projet -->
+    <header class="detail-header">
+      <h1>Internet Relay Chat : Client &amp; Serveur</h1>
+      <p class="detail-intro">
+        Implémentation d’un système de chat en temps réel inspiré d’IRC :
+        un serveur Node.js/ExpressJS + Socket.IO, et un client ReactJS communiquant
+        via WebSocket.  
+        Les salons, messages et utilisateurs sont conservés de manière persistante.
+      </p>
+    </header>
+
+    <!-- 2. Contenu en deux colonnes -->
+    <section class="detail-content">
+
+      <!-- 2.1. Description textuelle -->
+      <article class="detail-text">
+
+        <h2>Architecture & Composants</h2>
+        <ul>
+          <li><strong>Serveur</strong> : Node.js + ExpressJS expose une API REST et gère les WebSocket via <code>socket.io</code>.</li>
+          <li><strong>Client</strong> : ReactJS (hooks/Context) pour l’interface : salons, messages, commandes.</li>
+          <li><strong>Protocol</strong> : implémentation simplifiée d’IRC (NICK, JOIN, PRIVMSG, etc.).</li>
+        </ul>
+
+        <h2>Persistance</h2>
+        <p>
+          Les salons et messages sont stockés de façon durable — à l’aide de la méthode choisie 
+          (fichiers, base de données, etc.) — pour recharger l’état en cas de redémarrage.  
+          Aucune authentification n’est requise, mais peut être ajoutée en bonus.
+        </p>
+
+        <h2>Commandes disponibles</h2>
+        <ul>
+          <li><code>/nick &lt;pseudo&gt;</code> : définit ton surnom.</li>
+          <li><code>/list [filtre]</code> : liste les salons (optionnellement filtrés).</li>
+          <li><code>/create &lt;salon&gt;</code> : crée un nouveau canal.</li>
+          <li><code>/delete &lt;salon&gt;</code> : supprime un canal existant.</li>
+          <li><code>/join &lt;salon&gt;</code> : rejoint un canal.</li>
+          <li><code>/quit &lt;salon&gt;</code> : quitte un canal.</li>
+          <li><code>/users</code> : liste les utilisateurs du canal courant.</li>
+          <li><code>/msg &lt;pseudo&gt; &lt;message&gt;</code> : message privé à un utilisateur.</li>
+          <li><code>&lt;message&gt;</code> : envoie un message à tout le canal.</li>
+        </ul>
+
+        <h2>Technologies & Outils</h2>
+        <ul>
+          <li>Node.js (v18+), ExpressJS, Socket.IO</li>
+          <li>ReactJS (v18), WebSocket natif ou client Socket.IO</li>
+          <li>ESLint, Prettier pour la qualité de code</li>
+          <li>Tests unitaires avec Jest (côté serveur)</li>
+        </ul>
+
+      </article>
+
+      <!-- 2.2. Galerie d’images -->
+      <aside class="detail-images">
+        <figure>
+          <img src="../assets/Capture d'écran 2025-02-02 183510.png" alt="Client IRC ReactJS">
+          <figcaption>Interface du client ReactJS</figcaption>
+        </figure>
+        <figure>
+          <img src="../assets/Capture d'écran 2025-02-04 102912.png" alt="Logs serveur Node.js">
+          <figcaption>Exemple de code</figcaption>
+        </figure>
+      </aside>
+
+    </section>
+
   </main>
 
-  <!-- SCRIPT D’APPARITION -->
+  <!-- FADE-IN AU CHARGEMENT -->
   <script>
-    // Fade-in au chargement
     document.addEventListener('DOMContentLoaded', () => {
       document.querySelector('.detail-projet').style.opacity = 1;
     });

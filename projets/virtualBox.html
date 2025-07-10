@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Machines Virtuelles — Détails</title>
+  <link rel="stylesheet" href="../projets.css">
+</head>
+<body>
+
+  <!-- NAVIGATION “Retour” -->
+  <nav class="detail-nav">
+    <a href="../index.html">← Retour au portfolio</a>
+  </nav>
+
+  <main class="detail-projet">
+
+    <!-- 1. En-tête du projet -->
+    <header class="detail-header">
+      <h1>Création de 4 Machines Virtuelles</h1>
+      <p class="detail-intro">
+        Ce projet comprend la création et l’automatisation de 4 machines virtuelles  
+        ayant chacune un rôle distinct : passerelle, serveur web, poste employé et poste administrateur.
+      </p>
+    </header>
+
+    <!-- 2. Contenu en deux colonnes -->
+    <section class="detail-content">
+
+      <!-- 2.1. Description textuelle -->
+      <article class="detail-text">
+
+        <h2>Détail des Machines</h2>
+
+        <h3>1. Passerelle (OpenBSD 7.6)</h3>
+        <p>
+          La VM « Passerelle » sert à relier et isoler plusieurs réseaux.  
+          Système : OpenBSD 7.6.
+        </p>
+        <ul>
+          <li>4 cartes réseau :</li>
+          <li>&#8226; NAT : traduction d’adresses réseau</li>
+          <li>&#8226; 3 réseaux privés : attribution d’identités distinctes à chaque VM</li>
+          <li>&#8226; Adaptateur réseau virtuel actif pour la connexion</li>
+        </ul>
+
+        <h3>2. Serveur Web (FreeBSD 14)</h3>
+        <p>
+          La VM « Serveur Web » héberge une application PHP et expose une base de données.  
+          Système : FreeBSD 14.
+        </p>
+        <ul>
+          <li>Réseau interne connecté au serveur DHCP de l’administration</li>
+          <li>Base de données MySQL/PostgreSQL accessible via script PHP</li>
+        </ul>
+
+        <h3>3. Client (Employé)</h3>
+        <p>
+          Simule le poste d’un employé standard.  
+          Système : Debian 12 (ou autre distrib légère).
+        </p>
+        <ul>
+          <li>Réseau privé isolé</li>
+          <li>Interface graphique (XFCE/GNOME) pour utilisation bureautique</li>
+        </ul>
+
+        <h3>4. Client (Administrateur)</h3>
+        <p>
+          Simule le poste d’un administrateur réseau.  
+          Système : Debian 12 (ou distrib adaptée).
+        </p>
+        <ul>
+          <li>Réseau privé avec accès privilégié</li>
+          <li>Outils d’administration (SSH, monitoring, gestion de VM)</li>
+        </ul>
+
+      </article>
+
+      <!-- 2.2. Galerie d’images -->
+      <aside class="detail-images">
+        <figure>
+          <img src="../assets/vm-gateway.png" alt="Passerelle OpenBSD">
+          <figcaption>VM Passerelle (OpenBSD 7.6)</figcaption>
+        </figure>
+        <figure>
+          <img src="../assets/vm-webserver.png" alt="Serveur Web FreeBSD">
+          <figcaption>VM Serveur Web (FreeBSD 14)</figcaption>
+        </figure>
+        <figure>
+          <img src="../assets/Capture d'écran 2024-12-13 145002.png" alt="Client Employé">
+          <figcaption>VM Client (Employé)</figcaption>
+        </figure>
+        <figure>
+          <img src="../assets/vm-client-admin.png" alt="Client Administrateur">
+          <figcaption>VM Client (Administrateur)</figcaption>
+        </figure>
+      </aside>
+
+    </section>
+  </main>
+
+  <!-- FADE-IN AU CHARGEMENT -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelector('.detail-projet').style.opacity = 1;
+    });
+  </script>
+</body>
+</html>

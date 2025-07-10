@@ -24,3 +24,30 @@ window.addEventListener('scroll', () => {
     : nav.classList.remove('scrolled');
 });
 
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // Ouvre la modal correspondante
+    document.querySelectorAll('.carte-projet[data-modal]').forEach(card => {
+      card.addEventListener('click', () => {
+        const id = card.getAttribute('data-modal');
+        document.getElementById(id).classList.add('show');
+      });
+    });
+
+    // Ferme quand on clique sur le bouton × ou en-dehors du contenu
+    document.querySelectorAll('.modal').forEach(modal => {
+      modal.addEventListener('click', e => {
+        if (e.target.classList.contains('modal') || e.target.classList.contains('modal-close')) {
+          modal.classList.remove('show');
+        }
+      });
+    });
+
+    // Fermer à la touche Échap
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.modal.show').forEach(m => m.classList.remove('show'));
+      }
+    });
+  });
+
