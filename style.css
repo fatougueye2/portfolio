@@ -53,14 +53,6 @@
   filter: blur(90px);
 }
 
-h1{
-  margin: 0 auto;
-  top: 200px;
-  text-align: center;
-  font-family: sans-serif;
-  font-size: 90px;
-  position: relative;
-}
 
 /* ========================================
    FULLSCREEN OVERLAY
@@ -106,7 +98,7 @@ h1{
   animation: move2 8s ease-in-out infinite;
 }
 .blob3 {
-  width: 500px; height: 500px;
+  width: 400px; height: 500px;
   background: #F6DF10;
   top: 50%; left: 70%;
   animation: move3 12s ease-in-out infinite;
@@ -117,6 +109,14 @@ h1{
   top: 65%; left: 20%;
   animation: move1 7s ease-in-out infinite;
 }
+
+.blob5 {
+  width: 350px; height: 350px;
+  background: #cc22c98b;
+  top: 5%; left: 70%;
+  animation: move1 7s ease-in-out infinite;
+}
+
 
 /* Keyframes exemple */
 @keyframes move1 {
@@ -147,11 +147,12 @@ h1{
 
 /* 3) Style de ton titre */
 .overlay-content h1 {
-  margin: 0;                   /* plus aucune marge parasitaire */
+  margin: 0;                  
   font-size: 2.5rem;
   color: #4b3a3a;
   font-family: 'Segoe UI', sans-serif;
 }
+
 
 
 /* ==========================================================================
