@@ -105,5 +105,5 @@ window.addEventListener('load', () => {
     ovl.classList.add('fade-out');
     // quand la transition est finie, on retire l'overlay
     ovl.addEventListener('transitionend', () => ovl.remove(), { once: true });
-  }, 5000);
+  }, 2300);
 });

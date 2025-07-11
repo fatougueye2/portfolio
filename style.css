@@ -363,25 +363,34 @@ nav a.active::after {
 
 
 
-#main-nav.scrolled ul li a {
+/* ========================================
+   Sidebar Icons – Glassmorphism
+   ======================================== */
+nav#main-nav.scrolled ul li a {
+  /* anciennement : background: rgba(255,182,193,0.8); */
+  background: rgba(255, 255, 255, 0.2);    /* fond blanc translucide */
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(8px);              /* flou derrière */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  /* reste inchangé : */
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 1.2rem;
-  height: 1.2rem;
-  background: rgba(255,182,193,0.8);
+  width: 1.4rem;
+  height: 1.4rem;
   border-radius: 50%;
   transform: translateX(70%);
   transition: transform 0.3s ease, background 0.3s ease;
   color: #fff;
-  text-decoration: none;
   cursor: pointer;
-  padding: 0.5rem;
+  text-decoration: none;
 }
 
-#main-nav.scrolled ul li a:hover {
+/* Hover : on renforce légèrement l’opacité et on réchauffe le fond */
+nav#main-nav.scrolled ul li a:hover {
   transform: translateX(0);
-  background: rgba(255,182,193,1);
+  background: rgba(227, 64, 151, 0.35);
+  border-color: rgba(255, 255, 255, 0.6);
 }
 
 
@@ -421,11 +430,14 @@ nav a.active::after {
    6. Hero Section
    ========================================================================== */
 .hero {
-  position: relative;
-  background: #fff;
-  padding: 6em 1em 4em;
+  /* prends presque tout l’écran */
+  min-height: 80vh; 
+  margin-top: 0;     
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  overflow: hidden;
 }
 .hero::after {
   content: "";
