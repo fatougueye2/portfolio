@@ -95,3 +95,15 @@ document.addEventListener('DOMContentLoaded', () => {
     updateButtons();
   });
 });
+
+window.addEventListener('load', () => {
+  // Attendre 5 s
+  setTimeout(() => {
+    const ovl = document.getElementById('loading-overlay');
+    if (!ovl) return;
+    // déclenche le fade
+    ovl.classList.add('fade-out');
+    // quand la transition est finie, on retire l'overlay
+    ovl.addEventListener('transitionend', () => ovl.remove(), { once: true });
+  }, 5000);
+});
