@@ -66,6 +66,8 @@
   background: #ffffff;         /* fond blanc opaque */
   z-index: 9999;
   overflow: hidden;
+  opacity: 1;                /* visible par défaut */
+  transition: opacity 1s ease; /* transition douce */
 }
 
 /* Quand on déclenche le fade-out */
@@ -153,7 +155,9 @@
   font-family: 'Segoe UI', sans-serif;
 }
 
-
+.overlay.fade-out {
+  opacity: 0;
+}
 
 /* ==========================================================================
    1. Base Styles
