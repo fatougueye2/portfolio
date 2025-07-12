@@ -92,27 +92,116 @@
 
 
 
-<section id="a-propos" class="about-section">
+<section id="about" class="about-section persona">
   <div class="about-container">
-    <!-- Colonne image -->
+    <!-- IMAGE À GAUCHE -->
     <div class="about-image">
-      <img src="assets/IMG_1881.jpeg" alt="Photo de Fatou Gueye">
+      <img src="assets/IMG_1881.jpeg" alt="Photo de Fatou-kiné Gueye">
     </div>
-    <!-- Colonne texte -->
+    <!-- TEXTE À DROITE -->
     <div class="about-content">
-      <h2>À propos de moi</h2>
-      <p class="subtitle">Fatou-kiné Gueye – Cybersecurity Apprentice</p>
-      <p class="description">
-        Développeuse Web Front-end en apprentissage, je crée des expériences
-        utilisateur modernes et sécurisées. Passionnée par la cybersécurité,
-        j’allie rigueur et créativité pour bâtir des interfaces à la fois
-        esthétiques et robustes.
+      <!-- Titre principal + rôle/âge -->
+      <h2 class="about-title">
+        Fatou-kiné Gueye
+        <span class="about-meta">/ 22 ans / Apprentie Cybersécurité</span>
+      </h2>
+      <!-- Citation ou accroche -->
+      <blockquote class="about-quote">
+        « Développeuse Web Front-end en apprentissage, je crée des interfaces modernes, sécurisées et accessibles. »
+      </blockquote>
+      <!-- Sous-section 1 -->
+      <h3>Défis rencontrés</h3>
+      <p>
+        Passer d’un monde statique HTML/CSS à des applications dynamiques JavaScript peut être déroutant ;
+        j’ai dû apprendre à structurer mon code, gérer l’asynchronicité et optimiser les performances.
       </p>
-      <div class="social-icons">
-        <a href="https://behance.net/…" target="_blank" aria-label="Behance"><i class="fab fa-behance"></i></a>
-        <a href="https://dribbble.com/…" target="_blank" aria-label="Dribbble"><i class="fab fa-dribbble"></i></a>
-        <a href="https://twitter.com/…" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-        <a href="https://linkedin.com/in/…" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <!-- Sous-section 2 -->
+      <h3>Besoins</h3>
+      <p>
+        Je souhaite approfondir mes connaissances en frameworks front-end
+        (React, Vue) et renforcer mes compétences en sécurité (audit de dépendances,
+        mise en place de headers HTTP).
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="competences" class="competences-section">
+  <h2>Compétences</h2>
+  <p class="competences-subtitle">
+    Mes savoir-faire en Front-end, Back-end et Outils & Méthodologies.
+  </p>
+
+  <div class="competences-categories">
+    <!-- Front-end -->
+    <div class="competences-category">
+      <h3>Front-end</h3>
+      <div class="competences-grid">
+        <div class="competence-card">
+          <i class="fab fa-html5"></i>
+          <span>HTML5</span>
+        </div>
+        <div class="competence-card">
+          <i class="fab fa-css3-alt"></i>
+          <span>CSS3</span>
+        </div>
+        <div class="competence-card">
+          <i class="fab fa-js-square"></i>
+          <span>JavaScript</span>
+        </div>
+        <div class="competence-card">
+          <i class="fab fa-react"></i>
+          <span>ReactJS</span>
+        </div>
+        <!-- ajoute d’autres cartes si besoin -->
+      </div>
+    </div>
+
+    <!-- Back-end -->
+    <div class="competences-category">
+      <h3>Back-end</h3>
+      <div class="competences-grid">
+        <div class="competence-card">
+          <i class="fab fa-node-js"></i>
+          <span>Node.js</span>
+        </div>
+        <div class="competence-card">
+          <i class="fab fa-python"></i>
+          <span>Python & Flask</span>
+        </div>
+        <div class="competence-card">
+          <i class="fas fa-database"></i>
+          <span>PostgreSQL</span>
+        </div>
+        <div class="competence-card">
+          <i class="fas fa-docker"></i>
+          <span>Docker</span>
+        </div>
+        <!-- ajoute d’autres cartes si besoin -->
+      </div>
+    </div>
+
+    <!-- Outils & Méthodologies -->
+    <div class="competences-category">
+      <h3>Outils & Méthodologies</h3>
+      <div class="competences-grid">
+        <div class="competence-card">
+          <i class="fab fa-git-alt"></i>
+          <span>Git</span>
+        </div>
+        <div class="competence-card">
+          <i class="fas fa-project-diagram"></i>
+          <span>CI/CD</span>
+        </div>
+        <div class="competence-card">
+          <i class="fas fa-layer-group"></i>
+          <span>Agile & Scrum</span>
+        </div>
+        <div class="competence-card">
+          <i class="fab fa-linux"></i>
+          <span>OpenBSD & Linux</span>
+        </div>
+        <!-- ajoute d’autres cartes si besoin -->
       </div>
     </div>
   </div>
@@ -515,6 +604,73 @@
     </a>
   </div>
 </div>
+
+<section id="parcours" class="parcours-section">
+  <h2>Parcours Académique</h2>
+  <p class="parcours-subtitle">
+    De ma formation initiale à mes diplômes clés.
+  </p>
+  <div class="parcours-timeline">
+    <!-- Item 1 -->
+    <div class="parcours-item">
+      <div class="parcours-date">2023 – Présent</div>
+      <div class="parcours-content">
+        <h3>Bachelor Cybersécurité (en cours)</h3>
+        <p>Université de Technologie<br>Paris, France</p>
+      </div>
+    </div>
+    <!-- Item 2 -->
+    <div class="parcours-item">
+      <div class="parcours-date">2021 – 2023</div>
+      <div class="parcours-content">
+        <h3>DUT Informatique</h3>
+        <p>IUT de Lille<br>Lille, France</p>
+      </div>
+    </div>
+    <!-- Item 3 -->
+    <div class="parcours-item">
+      <div class="parcours-date">2019 – 2021</div>
+      <div class="parcours-content">
+        <h3>Baccalauréat Scientifique</h3>
+        <p>Lycée Victor Hugo<br>Paris, France</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="interets" class="interets-section">
+  <h2>Centres d’intérêt</h2>
+  <p class="interets-subtitle">
+    Quand je ne code pas, voilà ce qui m’anime !
+  </p>
+  <div class="interets-grid">
+    <div class="interet-card">
+      <i class="fas fa-book-open"></i>
+      <span>Lecture</span>
+    </div>
+    <div class="interet-card">
+      <i class="fas fa-plane"></i>
+      <span>Voyages</span>
+    </div>
+    <div class="interet-card">
+      <i class="fas fa-camera-retro"></i>
+      <span>Photographie</span>
+    </div>
+    <div class="interet-card">
+      <i class="fas fa-music"></i>
+      <span>Musique</span>
+    </div>
+    <div class="interet-card">
+      <i class="fas fa-hiking"></i>
+      <span>Randonnée</span>
+    </div>
+    <div class="interet-card">
+      <i class="fas fa-paint-brush"></i>
+      <span>Art & DIY</span>
+    </div>
+    <!-- ajoute ou retire des cartes selon tes goûts -->
+  </div>
+</section>
 
 
   <section id="contact">

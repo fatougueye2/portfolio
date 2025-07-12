@@ -495,73 +495,93 @@ nav#main-nav.scrolled ul li a:hover {
 /* ================
    About
    ================ */
-
-
-.about-section {
+/* ====================================================
+   Section Persona “À propos de moi”
+   ==================================================== */
+.about-section.persona {
   padding: 4em 2em;
-  background: #fff; /* ou #fffafc pour un léger fond rosé */
+  background: var(--color-bg-light);
 }
 
 .about-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
   max-width: 1000px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 250px 1fr;
-  align-items: center;
-  gap: 2rem;
 }
 
-/* Image ronde avec ombre douce */
+/* IMAGE à gauche */
+.about-image {
+  flex: 0 0 400px;
+}
 .about-image img {
   width: 100%;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  height: 500px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: 2rem  2rem  0rem  2rem;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
 }
 
-/* Titre & sous-titre */
-.about-content h2 {
+
+/* TEXTE à droite */
+.about-content {
+  flex: 1;
+}
+
+.about-title {
+  font-size: 2.5rem;
   margin: 0;
-  font-size: 2rem;
+  color: var(--color-text);
 }
-.about-content .subtitle {
-  margin: 0.25em 0 1em;
+.about-meta {
+  font-weight: 400;
   font-size: 1rem;
-  font-weight: 600;
+  color: var(--color-text-muted);
+  margin-left: 1rem;
 }
 
-/* Texte */
-.about-content .description {
+/* Citation */
+.about-quote {
+  margin: 1rem 0 2rem;
+  padding-left: 1rem;
+  border-left: 4px solid var(--color-accent-2);
+  font-style: italic;
+  color: var(--color-accent-3);
+  line-height: 1.5;
+}
+
+/* Sous-titres */
+.about-content h3 {
+  margin-top: 1.5rem;
+  font-size: 1.75rem;
+  color: var(--color-text);
+  border-bottom: 1px solid var(--color-bg-medium);
+  padding-bottom: 0.25em;
+}
+
+/* Paragraphes */
+.about-content p {
+  margin-top: 0.5em;
   line-height: 1.6;
-  color: #555;
-  margin-bottom: 1.5em;
+  color: var(--color-text-muted);
 }
 
-/* Icônes sociales */
-.social-icons {
-  display: flex;
-  gap: 1rem;
-}
-.social-icons a {
-  font-size: 1.25rem;
-  color: #4b3a3a;
-  transition: color 0.2s ease;
-}
-.social-icons a:hover {
-  color: #e7dcd6;
-}
-
-/* Responsive mobile */
-@media (max-width: 768px) {
+/* Responsive */
+@media (max-width: 800px) {
   .about-container {
-    grid-template-columns: 1fr;
+    flex-direction: column;
     text-align: center;
   }
   .about-image {
-    max-width: 200px;
-    margin: 0 auto 1.5rem;
+    margin: 0 auto 2rem;
+    max-width: 300px;
+  }
+  .about-content h3 {
+    border: none;
   }
 }
-
 
 /* ==========================================================================
    7. Sections & Typography
@@ -580,6 +600,97 @@ h2 {
   border-left: 5px solid #8b0000;
   padding-left: 1em;
 }
+
+
+/* ==========================================================================
+   Section “Compétences”
+   --------------------------------------------------------------------------
+   Trois catégories : Front-end | Back-end | Outils & Méthodologies
+   ========================================================================== */
+.competences-section {
+  padding: 4em 2em;
+  text-align: center;
+}
+.competences-section h2 {
+  font-size: 2em;
+  margin-bottom: 0.5em;
+}
+.competences-subtitle {
+  color: var(--color-text-muted);
+  margin-bottom: 2em;
+}
+
+/* Conteneur des 3 catégories */
+.competences-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+/* Chaque catégorie a son titre et sa grille */
+.competences-category {
+  flex: 1 1 300px;       /* s’adapte, minimum 300px */
+  max-width: 350px;
+}
+
+/* Titre de catégorie */
+.competences-category h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--color-text);
+  border-bottom: 2px solid var(--color-accent-1);
+  display: inline-block;
+  padding-bottom: 0.25rem;
+}
+
+/* grille interne des cartes */
+.competences-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: 1rem;
+}
+
+/* carte de compétence */
+.competence-card {
+  background: var(--color-accent-1);
+  border-radius: 12px;
+  padding: 1rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: background 0.3s ease, transform 0.3s ease;
+  cursor: default;
+}
+.competence-card i {
+  font-size: 1.75rem;
+  color: var(--color-accent-3);
+  margin-bottom: 0.4rem;
+}
+.competence-card span {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+/* hover léger */
+.competence-card:hover {
+  background: var(--color-accent-2);
+  transform: translateY(-4px);
+}
+
+/* Responsive pour petits écrans */
+@media (max-width: 768px) {
+  .competences-categories {
+    flex-direction: column;
+    align-items: center;
+  }
+  .competences-category {
+    max-width: none;
+    width: 100%;
+  }
+}
+
 
 /* ==========================================================================
    8. Project Gallery
@@ -1119,6 +1230,171 @@ body.projet-loaded .detail-projet {
   font-size: .9em;
   color: var(--color-text);
 }
+
+/* ==========================================================================
+   Section “Parcours Académique”
+   --------------------------------------------------------------------------
+   Timeline verticale épurée
+   ========================================================================== */
+.parcours-section {
+  padding: 4em 2em;
+  background: var(--color-bg-medium);
+  text-align: center;
+}
+.parcours-section h2 {
+  font-size: 2em;
+  margin-bottom: 0.5em;
+  color: var(--color-text);
+}
+.parcours-subtitle {
+  color: var(--color-text-muted);
+  margin-bottom: 2em;
+}
+
+.parcours-timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  padding-left: 2em;
+}
+/* la ligne verticale */
+.parcours-timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 1em;
+  width: 2px;
+  height: 100%;
+  background: var(--color-accent-1);
+}
+
+.parcours-item {
+  position: relative;
+  margin-bottom: 2.5em;
+  display: flex;
+  align-items: flex-start;
+}
+/* le cercle repère */
+.parcours-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.35em;
+  width: 12px;
+  height: 12px;
+  background: var(--color-accent-2);
+  border: 2px solid var(--color-accent-3);
+  border-radius: 50%;
+}
+/* date */
+.parcours-date {
+  flex: 0 0 120px;
+  text-align: right;
+  font-weight: bold;
+  color: var(--color-text);
+  margin-right: 1em;
+}
+/* contenu de l’étape */
+.parcours-content {
+  flex: 1;
+  text-align: left;
+}
+.parcours-content h3 {
+  margin: 0 0 0.3em;
+  font-size: 1.25rem;
+  color: var(--color-text);
+}
+.parcours-content p {
+  margin: 0;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .parcours-timeline {
+    padding-left: 1em;
+  }
+  .parcours-timeline::before {
+    left: 0.5em;
+  }
+  .parcours-item {
+    flex-direction: column;
+    padding-left: 1.5em;
+  }
+  .parcours-item::before {
+    left: 0.5em;
+  }
+  .parcours-date {
+    text-align: left;
+    margin-bottom: 0.3em;
+  }
+}
+
+
+/* ==========================================================================
+   Section “Centres d’intérêt”
+   --------------------------------------------------------------------------
+   Grille d’icônes avec légende
+   ========================================================================== */
+.interets-section {
+  padding: 4em 2em;
+  text-align: center;
+  background: var(--color-bg-surface, #fff);
+}
+.interets-section h2 {
+  font-size: 2em;
+  margin-bottom: 0.5em;
+  color: var(--color-text);
+}
+.interets-subtitle {
+  color: var(--color-text-muted);
+  margin-bottom: 2em;
+}
+
+.interets-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.interet-card {
+  background: var(--color-accent-1);
+  border-radius: 12px;
+  padding: 1.5rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: background 0.3s ease, transform 0.3s ease;
+  cursor: default;
+}
+
+.interet-card i {
+  font-size: 1.75rem;
+  color: var(--color-accent-3);
+  margin-bottom: 0.5rem;
+}
+
+.interet-card span {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.interet-card:hover {
+  background: var(--color-accent-2);
+  transform: translateY(-4px);
+}
+
+/* Responsive mobile */
+@media (max-width: 600px) {
+  .interets-grid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  }
+}
+
 
 /* ==========================================================================
    9. Contact Form & Email Badge
