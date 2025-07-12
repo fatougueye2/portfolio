@@ -1,3 +1,59 @@
+:root {
+  /* Neutres pour fonds */
+  --color-bg-light:   #EDEDE9;
+  --color-bg-medium:  #F5EBE0;
+  --color-surface:    #FFFFFF;
+
+  /* Couleurs d’accent / composants */
+  --color-accent-1:   #D6CCC2;
+  --color-accent-2:   #E3D5CA;
+  --color-accent-3:   #D5BDAF;
+
+  /* Texte */
+  --color-text:       #333333; /* gris foncé pour le contraste */
+  --color-text-muted: #666666; /* gris moyen pour les sous-titres */
+}
+
+html {
+  /* tous les scrolls d’ancrage/html seront animés en “smooth” */
+  scroll-behavior: smooth;
+}
+
+
+body {
+  background-color: var(--color-bg-light);
+  color: var(--color-text);
+  overflow-x: hidden;
+}
+
+section, .card, .modal, nav {
+  background-color: var(--color-surface);
+  max-height: 100vh;
+
+}
+
+h1, h2, h3 {
+  color: var(--color-text);
+}
+
+p, li, .subtitle {
+  color: var(--color-text-muted);
+}
+
+a, .btn, .sidebar-icon:hover {
+  color: var(--color-accent-2);
+}
+
+.btn, .sidebar-icon {
+  background-color: var(--color-accent-1);
+  transition: background-color .3s;
+}
+
+.btn:hover, .sidebar-icon:hover {
+  background-color: var(--color-accent-3);
+}
+
+
 .absolute{
   position:absolute;
   top: 50px !important;
@@ -63,11 +119,12 @@
   display: flex;
   justify-content: center;     /* centre horizontalement */
   align-items: center;         /* centre verticalement */
-  background: #ffffff;         /* fond blanc opaque */
+  background: #d3cdc6;         /* fond blanc opaque */
   z-index: 9999;
   overflow: hidden;
+  transition: opacity 1s ease 0s;
   opacity: 1;                /* visible par défaut */
-  transition: opacity 1s ease; /* transition douce */
+
 }
 
 /* Quand on déclenche le fade-out */
@@ -76,9 +133,7 @@
   pointer-events: none;
 }
 
-/* ========================================
-   BLOBS FLUOS DERRIÈRE
-   ======================================== */
+/* BLOBS FLUOS DERRIÈRE */
 .blob {
   position: absolute;
   border-radius: 50%;
@@ -140,9 +195,7 @@
   100% { transform: translate(0,0); }
 }
 
-/* ========================================
-   CONTENU DE L’OVERLAY
-   ======================================== */
+/* CONTENU DE L’OVERLAY */
 .overlay-content {
   text-align: center;
 }
@@ -151,35 +204,12 @@
 .overlay-content h1 {
   margin: 0;                  
   font-size: 2.5rem;
-  color: #4b3a3a;
-  font-family: 'Segoe UI', sans-serif;
+ /* font-family: 'Segoe UI', sans-serif;*/
 }
 
 .overlay.fade-out {
   opacity: 0;
 }
-
-/* ==========================================================================
-   1. Base Styles
-   ========================================================================== */
-/* Headlines */
-h1, h2, h3, nav a {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;   /* ou 700 pour les titres importants */
-}
-
-.signature, .detail-intro {
-  font-family: 'Pacifico', cursive;
-}
-
-
-/* Texte courant */
-body, p, li {
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 300;   /* léger pour les paragraphes */
-  line-height: 1.6;
-}
-
 
 /* ==========================================================================
    2. Link Reset
@@ -191,40 +221,7 @@ body, p, li {
 .carte-projet a p {
   text-decoration: none;
   color: inherit;
-}
-
-/* ==========================================================================
-   3. Preloader
-   A simple three-dot blinking loader
-   ========================================================================== */
-#loader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #fffafc;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 999;
-}
-
-#loader .dot {
-  width: 15px;
-  height: 15px;
-  margin: 0 5px;
-  border-radius: 50%;
-  background: #ffc0cb;
-  animation: blink 1.4s infinite both;
-}
-
-#loader .dot:nth-child(2) { animation-delay: 0.2s; }
-#loader .dot:nth-child(3) { animation-delay: 0.4s; }
-
-@keyframes blink {
-  0%, 80%, 100% { opacity: 0; }
-  40%           { opacity: 1; }
+  cursor: pointer;
 }
 
 /* ==========================================================================
@@ -427,7 +424,7 @@ nav#main-nav.scrolled ul li a:hover {
 
 
 /* ==========================================================================
-   6. Hero Section
+   6. Hero 
    ========================================================================== */
 .hero {
   /* prends presque tout l’écran */
@@ -444,27 +441,11 @@ nav#main-nav.scrolled ul li a:hover {
   position: absolute;
   bottom: -50px;
   left: 0;
-  width: 200%;
+  width: 100vw;
   height: 200px;
-  background: #fffafc;
   transform: rotate(2deg);
   transform-origin: top left;
   z-index: -1;
-}
-
-
-.photo-profil {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  border: 3px solid #ffc0cb;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
-  margin: 0.5em 0;
-  font-size: 2.5em;
-  color: #c71585;
 }
 
 .slogan {
@@ -473,9 +454,49 @@ h1 {
   color: #a0522d;
 }
 
+/* les spans n’ont PAS d’animation tant que .animate n’est pas sur le parent */
+.word-by-word span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* quand on ajoute .animate au <h1>, on déclenche l’anim */
+.word-by-word.animate span {
+  animation: wordFadeUp .5s forwards;
+}
+
+/* on décale chaque mot de 0.3s */
+.word-by-word.animate span:nth-child(1) { animation-delay: 0.3s; }
+.word-by-word.animate span:nth-child(2) { animation-delay: 0.6s; }
+.word-by-word.animate span:nth-child(3) { animation-delay: 0.9s; }
+/* etc. selon ton nombre de mots… */
+
+/* keyframes inchangés */
+@keyframes wordFadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* style par défaut : mots invisibles et décalés */
+.word-by-word span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(20px);
+  margin-right: 0.25em;
+}
+
+/* rien d’autre ici, les animations seront en ligne (JS) */
+
+
+
 /* ================
-   About Section
+   About
    ================ */
+
+
 .about-section {
   padding: 4em 2em;
   background: #fff; /* ou #fffafc pour un léger fond rosé */
@@ -501,14 +522,11 @@ h1 {
 .about-content h2 {
   margin: 0;
   font-size: 2rem;
-  font-family: 'Poppins', sans-serif;
-  color: #4b3a3a;
 }
 .about-content .subtitle {
   margin: 0.25em 0 1em;
   font-size: 1rem;
   font-weight: 600;
-  color: #c71585; /* rose vif */
 }
 
 /* Texte */
@@ -529,7 +547,7 @@ h1 {
   transition: color 0.2s ease;
 }
 .social-icons a:hover {
-  color: #c71585;
+  color: #e7dcd6;
 }
 
 /* Responsive mobile */
@@ -555,14 +573,11 @@ section {
   opacity: 0;
 }
 
-section:nth-of-type(odd)  { background: #fffafc; }
-section:nth-of-type(even) { background: #fff; }
-
 h2 {
   margin-bottom: 1em;
   font-size: 2em;
   color: #8b0000;
-  border-left: 5px solid #db7093;
+  border-left: 5px solid #8b0000;
   padding-left: 1em;
 }
 
@@ -605,47 +620,7 @@ h2 {
   color: #555;
 }
 
-/* ==========================================================================
-   9. Contact Form & Email Badge
-   ========================================================================== */
-#contact .email {
-  display: inline-block;
-  background: #ffe4e1;
-  padding: 0.5em 1em;
-  border-radius: 20px;
-  margin-top: 0.5em;
-}
 
-.form-contact {
-  margin-top: 1em;
-  display: flex;
-  flex-direction: column;
-  gap: 1em;
-}
-
-.form-contact input,
-.form-contact textarea {
-  width: 100%;
-  padding: 0.75em;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  font-size: 1em;
-}
-
-.form-contact button {
-  background: #c71585;
-  color: #fff;
-  border: none;
-  padding: 0.75em 1.5em;
-  border-radius: 5px;
-  font-size: 1em;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.form-contact button:hover {
-  background: #a0522d;
-}
 
 /* ==========================================================================
    10. Language Badges
@@ -782,6 +757,9 @@ h2 {
   color: #c71585;
 }
 
+
+
+
 /* =====================
    Modal Glassmorphism
    ===================== */
@@ -808,7 +786,6 @@ h2 {
 }
 .vm-header h2 {
   margin: 0.25em 0;
-  color: #c71585;
 }
 .vm-status {
   font-style: italic;
@@ -915,8 +892,11 @@ h2 {
   color: #c71585;
 }
 
+
+
+
 /* ==========================================================================
-   Project Detail Pages (projets/*.html)
+   Project Detail Pages
    ========================================================================== */
 
 /* 1. Navigation “Retour” */
@@ -945,7 +925,6 @@ h2 {
 /* 3. Titre du projet */
 .detail-projet h1 {
   font-size: 2rem;
-  color: #c71585;
   text-align: center;
   margin-bottom: 0.75rem;
 }
@@ -980,6 +959,10 @@ h2 {
 body.projet-loaded .detail-projet {
   opacity: 1;
 }
+
+
+
+
 
 /* ================================
    Expérience Professionnelle 2-blocs
@@ -1066,7 +1049,7 @@ body.projet-loaded .detail-projet {
 
 /* boutons de navigation */
 .carousel-btn {
-  background: rgba(255,182,193,0.8);
+  background: #8b0000b6;
   border: none;
   color: #fff;
   font-size: 1.5rem;
@@ -1078,5 +1061,103 @@ body.projet-loaded .detail-projet {
   transition: background .2s;
 }
 .carousel-btn:hover {
-  background: rgba(255,182,193,1);
+  background: rgb(#8b0000);
+}
+
+
+/* ==========================================================================
+   8. Carrousels d’expériences
+   ========================================================================== */
+.exp-block {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+.exp-block--reverse {
+  flex-direction: row-reverse;
+}
+.exp-text,
+.carousel-wrapper {
+  flex: 1 1 300px;
+}
+
+/* Carousel basique */
+.carousel-wrapper {
+  display: flex;
+  align-items: center;
+}
+.carousel-track {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  flex: 1;
+}
+.exp-card {
+  flex: 0 0 280px;
+  aspect-ratio: 1 / 1;
+  scroll-snap-align: center;
+  background-size: cover;
+  background-position: center;
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  position: relative;
+  transition: transform .3s;
+}
+.exp-card:hover {
+  transform: translateY(-4px);
+}
+.exp-label {
+  position: absolute;
+  bottom: .8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255,255,255,.8);
+  padding: .3em .6em;
+  border-radius: .5em;
+  font-size: .9em;
+  color: var(--color-text);
+}
+
+/* ==========================================================================
+   9. Contact Form & Email Badge
+   ========================================================================== */
+#contact .email {
+  display: inline-block;
+  background: #a0512d2f;
+  padding: 0.5em 1em;
+  border-radius: 20px;
+  margin-top: 0.5em;
+}
+
+.form-contact {
+  margin-top: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.form-contact input,
+.form-contact textarea {
+  width: 100%;
+  padding: 0.75em;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+.form-contact button {
+  background: #925f47;
+  color: #fff;
+  border: none;
+  padding: 0.75em 1.5em;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.form-contact button:hover {
+  background: #a0522d;
 }

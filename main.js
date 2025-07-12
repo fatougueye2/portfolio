@@ -96,14 +96,36 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+
+// ① Au DOMContentLoaded, on découpe et on crée les spans SANS animation
+document.addEventListener('DOMContentLoaded', () => {
+  const heading = document.querySelector('.word-by-word');
+  const words   = heading.textContent.trim().split(' ');
+  heading.textContent = '';
+  words.forEach((word, i) => {
+    const span = document.createElement('span');
+    span.textContent = word + (i < words.length - 1 ? ' ' : '');
+    heading.appendChild(span);
+  });
+});
+
 window.addEventListener('load', () => {
-  // Attendre 5 s
-  setTimeout(() => {
-    const ovl = document.getElementById('loading-overlay');
-    if (!ovl) return;
-    // déclenche le fade
-    ovl.classList.add('fade-out');
-    // quand la transition est finie, on retire l'overlay
-    ovl.addEventListener('transitionend', () => ovl.remove(), { once: true });
-  }, 2300);
+  const overlay = document.getElementById('loading-overlay');
+  const heading = document.querySelector('.word-by-word');
+
+  // 1) on attend 5s puis on déclenche la disparition de l’overlay
+  setTimeout(() => overlay.classList.add('fade-out'), 1200);
+
+  // 2) dès que le fade-out CSS (1s) est terminé, on construit et anime le texte
+  overlay.addEventListener('transitionend', () => {
+    // split + build des <span>
+    const words = heading.textContent.trim().split(' ');
+    heading.textContent = '';
+    words.forEach((word, i) => {
+      const span = document.createElement('span');
+      span.textContent = word + (i < words.length - 1 ? ' ' : '');
+      span.style.animation = `wordFadeUp .5s forwards ${0.3 * i}s`;
+      heading.appendChild(span);
+    });
+  }, { once: true });
 });
