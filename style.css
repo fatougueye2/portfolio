@@ -253,7 +253,6 @@ nav ul {
 
 nav a {
   position: relative;
-  padding: .5rem;
   color: #4b3a3a;
   text-decoration: none;
   font-weight: bold;
@@ -265,139 +264,95 @@ nav a.active::after {
   left: 50%;
   width: 40%;
   height: 2px;
-  background: #c71585;
   transform: translateX(-50%);
 }
 
-
-/* 4.2 Scrolled state: hide underline and move nav to right drawer */
-#main-nav.scrolled::after {
-  display: none;
-}
-#main-nav.scrolled {
-  left: auto;
-  right: 1rem;
-}
-
-/* Vertical drawer styling on scroll */
-#main-nav.scrolled ul {
-  position: fixed;
-  top: 50%;
-  right: 1rem;
-  transform: translateY(-50%);
+/* ——————— Vertical drawer styling on scroll ——————— */
+#main-nav.scrolled{
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin: 0;
-  padding: 0;         /* no extra padding around container */
-  background: none;   /* transparent container */
+  top: 50%;
+  right: auto;
+  left: 2.5rem;
+  transform: translateY(-50%);
+}
+
+/* On ne déclare qu’une seule fois le ul scrolled ! */
+#main-nav.scrolled ul {
   list-style: none;
-  z-index: 1000;
-  opacity: 0.6;       /* semi-transparent until hover */
+  padding: 0;              /* pas de padding global sur l’ul */
+  margin: 0;
+  display: grid;
+  grid-auto-rows: 3rem;    /* hauteur fixe pour chaque icône */
+  row-gap: 1rem;           /* espace vertical */
+  justify-items: center; 
+  gap: 1rem;
+  opacity: 0.6;            /* semi-transparent jusqu’au hover */
   transition: opacity 0.3s ease;
 }
 
-/* ==========================================================================
-   5. Drawer Items (Circles)
-   --------------------------------------------------------------------------
-   Hide off-screen until hover; remove separators
-   ========================================================================== */
-/* — Sidebar verticalée : on cache le texte et on garde que l’icône — */
-/* ================================
-   Sidebar vertical — icônes only
-   déclenché avec .scrolled
-   ================================ */
-#main-nav.scrolled ul {
-  position: fixed;
-  top: 50%;
-  right: 1rem;
-  transform: translateY(-50%);
-  display: inline-flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin: 0;
-  padding: 0.5;         /* plus de padding global */
-  list-style: none;
-  background: none;   /* on vire tout fond */
-  z-index: 1000;
-  opacity: 0.6;       /* semi-transparent */
-  transition: opacity 0.3s ease;
+/* ——— Affichage des icônes / textes ——— */
+/* Par défaut (non scrolled) : on cache les icônes */
+#main-nav ul li a .sidebar-icon,
+#main-nav ul li a i
+ {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  line-height: 2rem;         /* pour centrer l’icône Font-Awesome */
+  text-align: center;
+  font-size: 1.2rem;   
 }
-/* 1) Par défaut – on affiche le texte, on cache l’image */
-#main-nav ul li a .sidebar-icon {
-  display: none;
-}
+
 #main-nav ul li a .nav-text {
   display: inline;
 }
 
-
-/* 2) Quand la nav est scrolled – on cache le texte, on affiche l’image */
-/* ========================================================================
-   Sidebar icons (PNG) — même taille pour toutes
-   ======================================================================== */
-#main-nav.scrolled ul li a .sidebar-icon {
-  width: 1.8rem;           /* largeur fixe */
-  height: 1.8rem;          /* hauteur fixe */
-  object-fit: contain;     /* garde les proportions sans déformation */
-  display: block;          /* pour que width/height s’appliquent correctement */
-  margin: 0;               /* supprime tout margin par défaut */
-  padding: 0;              /* supprime tout padding par défaut */
+/* En état “scrolled” : on cache le texte, on affiche l’icône */
+#main-nav.scrolled ul:hover {
+  opacity: 1;              /* plein opaque au survol */
 }
 
 #main-nav.scrolled ul li a .nav-text {
   display: none;
 }
-
-/* 3) Le “tiroir” : même transform que pour les cercles */
-#main-nav.scrolled ul li a {
-  transform: translateX(70%);
-  transition: transform 0.3s ease;
-}
-#main-nav.scrolled ul li:hover a {
-  transform: translateX(0);
-}
-
-
-
-/* ========================================
-   Sidebar Icons – Glassmorphism
-   ======================================== */
-nav#main-nav.scrolled ul li a {
-  /* anciennement : background: rgba(255,182,193,0.8); */
-  background: rgba(255, 255, 255, 0.2);    /* fond blanc translucide */
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(8px);              /* flou derrière */
+#main-nav.scrolled ul li a .sidebar-icon {
+  display: block;
+  width: 2rem;
+  height: 2rem;
+  padding: 0.4rem;         /* espace autour de l’icône dans le cercle */
+  border-radius: 50%;      /* cercle parfait */
+  object-fit: contain;
+  background: rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.4);
+  backdrop-filter: blur(8px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  /* reste inchangé : */
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+/* ——— Glassmorphism du bouton ——— */
+#main-nav.scrolled ul li a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 1.4rem;
-  height: 1.4rem;
+  width: 2.6rem;
+  height: 2.6rem;
+  background: rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.4);
   border-radius: 50%;
-  transform: translateX(70%);
+  transform: translateX(-70%);
   transition: transform 0.3s ease, background 0.3s ease;
-  color: #fff;
-  cursor: pointer;
-  text-decoration: none;
+}
+#main-nav.scrolled ul li:hover a {
+  transform: translateX(10%);
 }
 
-/* Hover : on renforce légèrement l’opacité et on réchauffe le fond */
-nav#main-nav.scrolled ul li a:hover {
-  transform: translateX(0);
-  background: rgba(227, 64, 151, 0.35);
-  border-color: rgba(255, 255, 255, 0.6);
-}
-
-
-/* Style de l’icône Font Awesome */
+/* ——— Stylisation de l’icône FontAwesome ——— */
 #main-nav.scrolled ul li a i {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   color: #c71585;
   background: rgba(255,182,193,0.6);
   border-radius: 50%;
-  padding: 0.4rem;
+  padding: 0.3rem;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   transition: background 0.3s ease, color 0.3s ease;
 }
@@ -406,20 +361,15 @@ nav#main-nav.scrolled ul li a:hover {
   color: #fff;
 }
 
-/* 1) Par défaut : on affiche le texte, on cache les icônes */
-#main-nav ul li a i {
-  display: none;
-}
-#main-nav ul li a .nav-text {
-  display: inline;
+/* 5) Hover sur chaque icône */
+#main-nav.scrolled ul li a:hover .sidebar-icon {
+  background: rgba(227,64,151,0.35);
+  border-color: rgba(255,255,255,0.6);
 }
 
-/* 2) En état scrolled : on cache le texte, on affiche les icônes */
-#main-nav.scrolled ul li a i {
-  display: inline-block;
-}
-#main-nav.scrolled ul li a .nav-text {
-  display: none;
+/* 6) Au dessus de l’icône (optionnel) : tirer une bordure colorée */
+#main-nav.scrolled ul li.active a .sidebar-icon {
+  box-shadow: 0 0 0 3px var(--color-accent-2);
 }
 
 
@@ -1436,4 +1386,55 @@ body.projet-loaded .detail-projet {
 
 .form-contact button:hover {
   background: #a0522d;
+}
+
+/* ==============================
+   Footer
+   ============================== */
+footer {
+  background-color: var(--color-bg-medium);
+  padding: 2rem 1rem;
+  color: var(--color-text-muted);
+}
+
+.footer-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footer-nav {
+  margin-bottom: 1rem;
+}
+
+.footer-nav a {
+  margin: 0 1rem;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color .3s;
+}
+
+.footer-nav a:hover {
+  color: var(--color-text);
+}
+
+.footer-social {
+  margin-bottom: 1rem;
+}
+
+.footer-social a {
+  margin: 0 0.5rem;
+  color: var(--color-accent-2);
+  font-size: 1.25rem;
+  transition: color .3s;
+}
+
+.footer-social a:hover {
+  color: var(--color-accent-3);
+}
+
+footer p {
+  font-size: 0.875rem;
+  margin: 0;
 }
