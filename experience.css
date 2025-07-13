@@ -1,0 +1,569 @@
+#experience .carousel {
+	position: relative;
+	width: 100%;
+	max-width: 1400px;
+	padding: 5vh 0;
+}
+
+#experience .carousel-track {
+	display: flex;
+	transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+	padding: 40px 0;
+	gap: 40px;
+}
+
+#experience .carousel-controls {
+	display: flex;
+	justify-content: center;
+	gap: 20px;
+	margin-top: 30px;
+}
+
+#experience .carousel-button {
+	background: var(--black);
+	color: var(--white);
+	border: none;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+#experience .carousel-button:hover {
+	transform: translateY(-2px);
+}
+
+#experience .carousel-button:active {
+	transform: translateY(0);
+}
+
+#experience .carousel-button svg {
+	width: 24px;
+	height: 24px;
+}
+
+#experience .card-system {
+	display: flex;
+	gap: 40px;
+}
+
+#experience .deconstructed-card {
+	position: relative;
+	width: var(--card-width);
+	height: var(--card-height);
+	cursor: pointer;
+	transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+	transform-style: preserve-3d;
+	flex-shrink: 0;
+}
+
+#experience .card-layer {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	transition: transform var(--transition-slow), opacity var(--transition-slow);
+}
+
+#experience .card-image {
+	overflow: hidden;
+	z-index: 1;
+}
+
+#experience .wave-svg {
+	width: 100%;
+	height: 100%;
+	transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#experience .card-frame {
+	z-index: 3;
+	pointer-events: none;
+}
+
+#experience .frame-path {
+	fill: none;
+	stroke: var(--frame-color);
+	stroke-width: 1;
+	stroke-dasharray: 1520;
+	stroke-dashoffset: 1520;
+	transition: stroke-dashoffset 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#experience .card-background {
+	z-index: 0;
+	background-color: var(--white);
+}
+
+#experience .bg-grid {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+#experience .grid-line {
+	position: absolute;
+	background-color: var(--grid-color);
+	transition: transform var(--transition-slow), opacity var(--transition-fast);
+}
+
+#experience .grid-line.horizontal {
+	width: 100%;
+	height: 1px;
+	transform: scaleX(0.3);
+	transform-origin: left;
+}
+
+#experience .grid-line.vertical {
+	height: 100%;
+	width: 1px;
+	transform: scaleY(0.3);
+	transform-origin: top;
+}
+
+#experience .bg-objects {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+}
+
+#experience .bg-object {
+	position: absolute;
+	opacity: 0.3;
+	transition: transform var(--transition-slow), opacity var(--transition-slow);
+}
+
+#experience .bg-object.circle {
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	bottom: 40px;
+	left: -30px;
+	transform: translateY(20px);
+}
+
+#experience .bg-object.square {
+	width: 60px;
+	height: 60px;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	top: 40px;
+	right: 30px;
+	transform: rotate(45deg) translateY(-20px);
+}
+
+#experience .bg-object.triangle {
+	width: 0;
+	height: 0;
+	border-left: 40px solid transparent;
+	border-right: 40px solid transparent;
+	border-bottom: 70px solid rgba(0, 0, 0, 0.05);
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) scale(0.5);
+}
+
+#experience .card-content {
+	z-index: 2;
+	padding: 30px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 100%;
+}
+
+#experience .ocean-content {
+	color: var(--white);
+}
+
+#experience .ocean-content .content-text,
+#experience .ocean-content .meta-text,
+#experience .ocean-content .cta-text {
+	color: var(--white);
+	text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+#experience .ocean-content .meta-line {
+	background-color: var(--white);
+}
+
+#experience .ocean-content .fragment-body {
+	background: rgba(15, 30, 44, 0.5);
+	padding: 10px;
+	border-radius: 4px;
+	backdrop-filter: blur(2px);
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+
+#experience .content-fragment {
+	position: relative;
+}
+
+#experience .fragment-heading {
+	margin-top: auto;
+	margin-bottom: 1.5rem;
+}
+
+#experience .content-text {
+	font-size: 2rem;
+	font-weight: 900;
+	line-height: 1.2;
+	letter-spacing: -0.02em;
+	color: var(--black);
+	transition: transform var(--transition-fast), opacity var(--transition-fast);
+	transform: translateY(10px);
+	opacity: 0.7;
+}
+
+#experience .content-subtext {
+	font-size: 0.875rem;
+	font-weight: 500;
+	letter-spacing: 0.05em;
+	margin-top: 1rem;
+	color: var(--black);
+	opacity: 0.5;
+	transform: translateY(10px);
+	transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+#experience .fragment-meta {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin-bottom: 2rem;
+}
+
+#experience .meta-line {
+	width: 40px;
+	height: 1px;
+	background-color: var(--black);
+	transform: scaleX(0.5);
+	transform-origin: left;
+	transition: transform var(--transition-fast);
+}
+
+#experience .meta-text {
+	font-family: "Space Mono", monospace;
+	font-size: 0.75rem;
+	letter-spacing: 0.05em;
+	opacity: 0.6;
+	transform: translateX(-5px);
+	transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+#experience .fragment-body {
+	max-width: 85%;
+	margin: 1.5rem 0;
+}
+
+#experience .fragment-body .content-text {
+	font-size: 0.9rem;
+	font-weight: 400;
+	line-height: 1.5;
+	letter-spacing: normal;
+	opacity: 0.6;
+}
+
+#experience .fragment-cta {
+	margin-top: auto;
+	overflow: visible;
+}
+
+#experience .cta-link {
+	text-decoration: none;
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	padding: 8px 0;
+}
+
+#experience .cta-box {
+	position: absolute;
+	top: 0;
+	left: -10px;
+	width: calc(100% + 20px);
+	height: 100%;
+	background-color: var(--black);
+	transform: scaleX(0);
+	transform-origin: left;
+	transition: transform var(--transition-fast);
+}
+
+#experience .ocean-content .cta-box {
+	background-color: var(--white);
+}
+
+#experience .cta-text {
+	position: relative;
+	font-family: "Space Mono", monospace;
+	font-size: 0.75rem;
+	font-weight: 700;
+	letter-spacing: 0.1em;
+	color: var(--black);
+	transition: color var(--transition-fast);
+	transform: translateX(-5px);
+	opacity: 0.7;
+	transition: transform var(--transition-fast), opacity var(--transition-fast),
+		color var(--transition-fast);
+}
+
+#experience .ocean-content .cta-text {
+	color: var(--white);
+}
+
+#experience .ocean-content .cta-link:hover .cta-text {
+	color: var(--black) !important;
+}
+
+#experience .align-right {
+	text-align: right;
+}
+
+#experience .text-align-right {
+	align-self: flex-end;
+	text-align: right;
+}
+
+#experience .text-align-right .meta-line {
+	transform-origin: right;
+}
+
+#experience .text-align-right .cta-box {
+	transform-origin: right;
+}
+
+#experience .text-align-right .meta-text {
+	transform: translateX(5px);
+}
+
+#experience 
+.text-card .content-text,
+.text-card .content-subtext {
+	color: var(--black);
+}
+
+#experience .deconstructed-card:hover .frame-path {
+	stroke-dashoffset: 0;
+}
+
+#experience .deconstructed-card:hover .content-text,
+#experience .deconstructed-card:hover .content-subtext {
+	transform: translateY(0);
+	opacity: 1;
+	transition-delay: 0.05s;
+}
+
+#experience .deconstructed-card:hover .fragment-body .content-text {
+	transition-delay: 0.1s;
+	opacity: 1;
+}
+
+#experience .deconstructed-card:hover .meta-text {
+	transform: translateX(0);
+	opacity: 1;
+	transition-delay: 0.15s;
+}
+
+#experience .deconstructed-card:hover .meta-line {
+	transform: scaleX(1);
+	transition-delay: 0.05s;
+}
+
+#experience .deconstructed-card:hover .wave-svg {
+	transform: scale(1.05);
+}
+
+#experience .deconstructed-card:hover .cta-text {
+	transform: translateX(0);
+	opacity: 1;
+	transition-delay: 0.2s;
+}
+
+#experience .deconstructed-card:hover .cta-link:hover .cta-box {
+	transform: scaleX(1);
+}
+
+#experience .deconstructed-card:hover .cta-link:hover .cta-text {
+	color: var(--white);
+}
+
+#experience .text-card:hover .grid-line.horizontal {
+	transform: scaleX(1);
+}
+
+#experience .text-card:hover .grid-line.vertical {
+	transform: scaleY(1);
+}
+
+#experience .text-card:hover .bg-object {
+	opacity: 1;
+	transform: translate(0, 0) rotate(0);
+}
+
+#experience .text-card:hover .bg-object.square {
+	transform: rotate(45deg) translate(0, 0);
+}
+
+#experience .text-card:hover .bg-object.triangle {
+	transform: translate(-50%, -50%) scale(1);
+}
+
+#experience .deconstructed-card:hover .grid-line:nth-child(1) {
+	transition-delay: 0.1s;
+}
+
+#experience .deconstructed-card:hover .grid-line:nth-child(2) {
+	transition-delay: 0.2s;
+}
+
+#experience .deconstructed-card:hover .grid-line:nth-child(3) {
+	transition-delay: 0.3s;
+}
+
+#experience .deconstructed-card:hover .grid-line:nth-child(4) {
+	transition-delay: 0.15s;
+}
+
+#experience .deconstructed-card:hover .grid-line:nth-child(5) {
+	transition-delay: 0.25s;
+}
+
+#experience .pregnancy-content .card-image svg {
+	background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+}
+
+#experience .baby-content .card-image svg {
+	background: linear-gradient(135deg, #4ecdc4, #7ee8e1);
+}
+
+#experience .percentage-content {
+	color: var(--black);
+}
+
+#experience .percentage-content .card-image svg {
+	background: linear-gradient(135deg, #ffd166, #ffe0a3);
+}
+
+#experience .egg-content {
+	color: var(--black);
+}
+
+#experience .egg-content .card-image svg {
+	background: linear-gradient(135deg, #06d6a0, #62f7d1);
+}
+
+#experience .sleep-content {
+	color: var(--white);
+}
+
+#experience .sleep-content .card-image svg {
+	background: linear-gradient(135deg, #118ab2, #5ac8e3);
+}
+
+#experience .age-content {
+	color: var(--white);
+}
+
+#experience .age-content .card-image svg {
+	background: linear-gradient(135deg, #073b4c, #3c7c8c);
+}
+
+#experience .percentage-content .meta-line,
+#experience .egg-content .meta-line {
+	background-color: var(--black);
+}
+ 
+#experience .sleep-content .meta-line,
+#experience .age-content .meta-line {
+	background-color: var(--white);
+}
+
+#experience .percentage-content .content-text,
+#experience .percentage-content .meta-text,
+#experience .percentage-content .cta-text,
+#experience .egg-content .content-text,
+#experience .egg-content .meta-text,
+#experience .egg-content .cta-text {
+	color: var(--black);
+}
+
+#experience .sleep-content .content-text,
+#experience .sleep-content .meta-text,
+#experience .sleep-content .cta-text,
+#experience .age-content .content-text,
+#experience .age-content .meta-text,
+#experience .age-content .cta-text {
+	color: var(--white);
+	text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+#experience .sleep-content .cta-box,
+#experience .age-content .cta-box {
+	background-color: var(--white);
+}
+
+#experience .sleep-content .cta-link:hover .cta-text,
+#experience .age-content .cta-link:hover .cta-text {
+	color: var(--black) !important;
+}
+
+#experience .dots-container {
+	display: flex;
+	justify-content: center;
+	gap: 8px;
+	margin-top: 20px;
+}
+
+#experience .dot {
+	width: 8px;
+	height: 8px;
+	background-color: var(--black);
+	border-radius: 50%;
+	opacity: 0.3;
+	transition: transform 0.3s ease, opacity 0.3s ease;
+	cursor: pointer;
+}
+
+#experience .dot.active {
+	opacity: 1;
+	transform: scale(1.3);
+}
+
+#experience .attribution {
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
+	font-size: 12px;
+	opacity: 0.7;
+}
+
+#experience .attribution a {
+	color: var(--black);
+	text-decoration: none;
+}
+
+@media (max-width: 768px) {
+	:root {
+		--card-width: 280px;
+		--card-height: 380px;
+	}
+
+	.card-content {
+		padding: 20px;
+	}
+
+	.content-text {
+		font-size: 1.8rem;
+	}
+}

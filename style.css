@@ -1,115 +1,3 @@
-:root {
-  /* Neutres pour fonds */
-  --color-bg-light:   #EDEDE9;
-  --color-bg-medium:  #F5EBE0;
-  --color-surface:    #FFFFFF;
-
-  /* Couleurs d’accent / composants */
-  --color-accent-1:   #D6CCC2;
-  --color-accent-2:   #E3D5CA;
-  --color-accent-3:   #D5BDAF;
-
-  /* Texte */
-  --color-text:       #333333; /* gris foncé pour le contraste */
-  --color-text-muted: #666666; /* gris moyen pour les sous-titres */
-}
-
-html {
-  /* tous les scrolls d’ancrage/html seront animés en “smooth” */
-  scroll-behavior: smooth;
-}
-
-
-body {
-  background-color: var(--color-bg-light);
-  color: var(--color-text);
-  overflow-x: hidden;
-}
-
-section, .card, .modal, nav {
-  background-color: var(--color-surface);
-  max-height: 100vh;
-
-}
-
-h1, h2, h3 {
-  color: var(--color-text);
-}
-
-p, li, .subtitle {
-  color: var(--color-text-muted);
-}
-
-a, .btn, .sidebar-icon:hover {
-  color: var(--color-accent-2);
-}
-
-.btn, .sidebar-icon {
-  background-color: var(--color-accent-1);
-  transition: background-color .3s;
-}
-
-.btn:hover, .sidebar-icon:hover {
-  background-color: var(--color-accent-3);
-}
-
-
-.absolute{
-  position:absolute;
-  top: 50px !important;
-  inset: 0;
-  justify-content: center;
-  display: inline-block;
-  flex-direction: row;
-}
-
-.justify-center{
-  justify-content: center;
-}
-
-.bg-shape1{
-  width: 400px;
-  height: 400px;
-  border-radius: 9999px;
-  position: relative;
-  animation: one 10s infinite;
-}
-
-.bg-shape2{
-  width: 300px;
-  height: 300px;
-  border-radius: 9999px;
-  position: relative;
-  animation: one 10s infinite;
-}
-
-
-@keyframes one{
-  0%{left: 0px; top: 0px;}
-  25%{left: -100px; top: 70px;}
-  50%{left: 20px; top: 150px;}
-  75%{left: 50px; top: 100px;}
-  100%{left: 0px; top: 0px;}
-}
-
-@keyframes two{
-  0%{left: 0px; top: 0px;}
-  25%{left: 50px; top: 10px;}
-  50%{left: 100px; top: 50px;}
-  75%{left: 50px; top: 100px;}
-  100%{left: 0px; top: 0px;}
-}
-
-.opacity-50{
-  opacity: .5;
-}
-
-
-.bg-blur{
-  filter: blur(90px);
-}
-
-
 /* ========================================
    FULLSCREEN OVERLAY
    ======================================== */
@@ -295,12 +183,7 @@ nav a.active::after {
 #main-nav ul li a .sidebar-icon,
 #main-nav ul li a i
  {
-  display: inline-block;
-  width: 1rem;
-  height: 1rem;
-  line-height: 2rem;         /* pour centrer l’icône Font-Awesome */
-  text-align: center;
-  font-size: 1.2rem;   
+  display: none;
 }
 
 #main-nav ul li a .nav-text {
@@ -540,7 +423,6 @@ nav a.active::after {
    ========================================================================== */
 section {
   padding: 4em 2em;
-  opacity: 0;
 }
 
 h2 {
@@ -1022,14 +904,31 @@ body.projet-loaded .detail-projet {
 }
 
 
-
-
-
 /* ================================
    Expérience Professionnelle 2-blocs
    ================================ */
 /* Carrousel horizontal */
 /* conteneur de chaque bloc */
+/* taille et ratio des “exp-card” */
+.exp-card {
+  flex: 0 0 250px;
+  height: 200px;      /* fixe la hauteur souhaitée */
+  background-size: cover;
+  background-position: center;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* étiquette sous chaque slide */
+.exp-label {
+  background: rgba(255, 255, 255, 0.8);
+  color: #333;
+  padding: 0.3em 0.6em;
+  border-radius: 0.5em;
+  font-size: 0.9em;
+}
+
+
 .exp-block {
   display: flex;
   align-items: center;
@@ -1057,7 +956,6 @@ body.projet-loaded .detail-projet {
   color: #8b0000;
 }
 
-
 .exp-text p {
   line-height: 1.6;
   color: #4b3a3a;
@@ -1068,16 +966,28 @@ body.projet-loaded .detail-projet {
   display: flex;
   align-items: center;
   flex: 1;
+  height: 320px;            /* <- même valeur que la hauteur de tes cartes */
+  overflow: hidden;  
 }
 .carousel-track {
   display: flex;
+  align-items: center;    /* centre verticalement tes cartes */
+  overflow-x: auto;       /* scroll horizontal activé */
+  overflow-y: hidden;     /* scroll vertical désactivé */
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   gap: 1rem;
   padding: 0.5rem 0;
   scroll-behavior: smooth;
   flex: 1;
+  -ms-overflow-style: none;  /* IE + Edge */
+  scrollbar-width: none;     /* Firefox */
 }
+
+.carousel-track::-webkit-scrollbar {
+  display: none;             /* Chrome, Safari, Opera */
+}
+
 .exp-card {
   flex: 0 0 320px;       /* ajuste ici la largeur des blocs */
   aspect-ratio: 1/1;     /* carré */
@@ -1141,44 +1051,6 @@ body.projet-loaded .detail-projet {
 .exp-text,
 .carousel-wrapper {
   flex: 1 1 300px;
-}
-
-/* Carousel basique */
-.carousel-wrapper {
-  display: flex;
-  align-items: center;
-}
-.carousel-track {
-  display: flex;
-  gap: 1rem;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  flex: 1;
-}
-.exp-card {
-  flex: 0 0 280px;
-  aspect-ratio: 1 / 1;
-  scroll-snap-align: center;
-  background-size: cover;
-  background-position: center;
-  border-radius: 1rem;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-  position: relative;
-  transition: transform .3s;
-}
-.exp-card:hover {
-  transform: translateY(-4px);
-}
-.exp-label {
-  position: absolute;
-  bottom: .8rem;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(255,255,255,.8);
-  padding: .3em .6em;
-  border-radius: .5em;
-  font-size: .9em;
-  color: var(--color-text);
 }
 
 /* ==========================================================================
