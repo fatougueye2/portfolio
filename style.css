@@ -1,17 +1,94 @@
+:root {
+  /* Neutres pour fonds */
+  --color-bg-light: #EDEDE9;
+  --color-bg-medium: #F5EBE0;
+  --color-surface: #FFFFFF;
+
+  /* Couleurs d’accent / composants */
+  --color-accent-1: #D6CCC2;
+  --color-accent-2: #E3D5CA;
+  --color-accent-3: #D5BDAF;
+
+  /* Texte */
+  --color-text: #333333;
+  /* gris foncé pour le contraste */
+  --color-text-muted: #666666;
+  /* gris moyen pour les sous-titres */
+}
+
+html {
+  /* tous les scrolls d’ancrage/html seront animés en “smooth” */
+  scroll-behavior: smooth;
+}
+
+
+body {
+  background-color: var(--color-bg-light);
+  color: var(--color-text);
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--color-text);
+}
+
+p,
+li,
+.subtitle {
+  color: var(--color-text-muted);
+}
+
+a,
+.btn,
+.sidebar-icon:hover {
+  color: var(--color-accent-2);
+}
+
+.btn,
+.sidebar-icon {
+  background-color: var(--color-accent-1);
+  transition: background-color .3s;
+}
+
+.btn:hover,
+.sidebar-icon:hover {
+  background-color: var(--color-accent-3);
+}
+
+.absolute {
+  position: absolute;
+  top: 50px !important;
+  inset: 0;
+  justify-content: center;
+  display: inline-block;
+  flex-direction: row;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
 /* ========================================
    FULLSCREEN OVERLAY
    ======================================== */
 #loading-overlay {
   position: fixed;
-  inset: 0;                    /* top/right/bottom/left = 0 */
+  inset: 0;
+  /* top/right/bottom/left = 0 */
   display: flex;
-  justify-content: center;     /* centre horizontalement */
-  align-items: center;         /* centre verticalement */
-  background: #d3cdc6;         /* fond blanc opaque */
+  justify-content: center;
+  /* centre horizontalement */
+  align-items: center;
+  /* centre verticalement */
+  background: #d3cdc6;
+  /* fond blanc opaque */
   z-index: 9999;
   overflow: hidden;
   transition: opacity 1s ease 0s;
-  opacity: 1;                /* visible par défaut */
+  opacity: 1;
+  /* visible par défaut */
 
 }
 
@@ -21,66 +98,59 @@
   pointer-events: none;
 }
 
-/* BLOBS FLUOS DERRIÈRE */
-.blob {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(100px);
-  opacity: 0.7;
-}
-
-/* Exemple de positions / tailles / couleurs / animations */
-.blob1 {
-  width: 400px; height: 400px;
-  background: #FFB6C1;
-  top: 10%; left: 5%;
-  animation: move1 10s ease-in-out infinite;
-}
-.blob2 {
-  width: 300px; height: 300px;
-  background: #A8FF8C;
-  top: 30%; left: 40%;
-  animation: move2 8s ease-in-out infinite;
-}
-.blob3 {
-  width: 400px; height: 500px;
-  background: #F6DF10;
-  top: 50%; left: 70%;
-  animation: move3 12s ease-in-out infinite;
-}
-.blob4 {
-  width: 350px; height: 350px;
-  background: #2EB6EC;
-  top: 65%; left: 20%;
-  animation: move1 7s ease-in-out infinite;
-}
-
-.blob5 {
-  width: 350px; height: 350px;
-  background: #cc22c98b;
-  top: 5%; left: 70%;
-  animation: move1 7s ease-in-out infinite;
-}
-
-
 /* Keyframes exemple */
 @keyframes move1 {
-  0%   { transform: translate(0,0); }
-  33%  { transform: translate(100px,50px); }
-  66%  { transform: translate(-50px,100px); }
-  100% { transform: translate(0,0); }
+  0% {
+    transform: translate(0, 0);
+  }
+
+  33% {
+    transform: translate(100px, 50px);
+  }
+
+  66% {
+    transform: translate(-50px, 100px);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
 }
+
 @keyframes move2 {
-  0%   { transform: translate(0,0); }
-  33%  { transform: translate(-80px,80px); }
-  66%  { transform: translate(120px,-40px); }
-  100% { transform: translate(0,0); }
+  0% {
+    transform: translate(0, 0);
+  }
+
+  33% {
+    transform: translate(-80px, 80px);
+  }
+
+  66% {
+    transform: translate(120px, -40px);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
 }
+
 @keyframes move3 {
-  0%   { transform: translate(0,0); }
-  33%  { transform: translate(60px,-80px); }
-  66%  { transform: translate(-100px,60px); }
-  100% { transform: translate(0,0); }
+  0% {
+    transform: translate(0, 0);
+  }
+
+  33% {
+    transform: translate(60px, -80px);
+  }
+
+  66% {
+    transform: translate(-100px, 60px);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
 }
 
 /* CONTENU DE L’OVERLAY */
@@ -90,13 +160,32 @@
 
 /* 3) Style de ton titre */
 .overlay-content h1 {
-  margin: 0;                  
+  margin: 0;
   font-size: 2.5rem;
- /* font-family: 'Segoe UI', sans-serif;*/
+  /* font-family: 'Segoe UI', sans-serif;*/
 }
 
 .overlay.fade-out {
   opacity: 0;
+}
+
+/* Pour que chaque lettre puisse bouger */
+.wave-text span {
+  display: inline-block;
+  margin-right: 0.5em;
+}
+
+/* Keyframes de la vague */
+@keyframes wave {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 /* ==========================================================================
@@ -119,8 +208,19 @@
    4.2 Scrolled – vertical “drawer” on right
    ========================================================================== */
 
-/* 4.1 Default navbar */
-nav {
+/* ==========================================================================
+   4. Navbar
+   --------------------------------------------------------------------------
+   4.1 Default – transparent, centered with underline
+   4.2 Scrolled – vertical “drawer” on right
+   ========================================================================== */
+
+/* ============================================
+   NAVBAR → SIDEBAR au scroll
+   ============================================ */
+
+/* ——— 1) Style par défaut : barre horizontale ——— */
+#main-nav {
   position: fixed;
   top: 0;
   left: 0;
@@ -129,8 +229,7 @@ nav {
   padding: 1rem 0;
   z-index: 1000;
 }
-
-nav ul {
+#main-nav ul {
   display: flex;
   justify-content: center;
   gap: 2rem;
@@ -138,121 +237,83 @@ nav ul {
   padding: 0;
   list-style: none;
 }
-
-nav a {
+#main-nav li a {
   position: relative;
   color: #4b3a3a;
   text-decoration: none;
   font-weight: bold;
 }
-nav a.active::after {
+#main-nav li a .sidebar-icon {
+  display: none;      /* on cache l’icône en mode horizontal */
+}
+#main-nav li a .nav-text {
+  display: inline-block;
+}
+
+/* (facultatif) souligner l’item actif */
+#main-nav li a.active::after {
   content: "";
   position: absolute;
-  bottom: -5px;
+  bottom: -4px;
   left: 50%;
   width: 40%;
   height: 2px;
+  background: currentColor;
   transform: translateX(-50%);
 }
 
-/* ——————— Vertical drawer styling on scroll ——————— */
-#main-nav.scrolled{
-  display: flex;
+/* ——— 2) Quand on scroll → on bascule en “scrolled” ——— */
+#main-nav.scrolled {
+  /* on passe en barre verticale fixe à gauche */
+  position: fixed;
   top: 50%;
-  right: auto;
-  left: 2.5rem;
+  left: 1rem;
   transform: translateY(-50%);
+  width: auto;
+  background: transparent;
 }
-
-/* On ne déclare qu’une seule fois le ul scrolled ! */
 #main-nav.scrolled ul {
-  list-style: none;
-  padding: 0;              /* pas de padding global sur l’ul */
-  margin: 0;
-  display: grid;
-  grid-auto-rows: 3rem;    /* hauteur fixe pour chaque icône */
-  row-gap: 1rem;           /* espace vertical */
-  justify-items: center; 
+  display: flex;
+  flex-direction: column;
   gap: 1rem;
-  opacity: 0.6;            /* semi-transparent jusqu’au hover */
+  margin: 0;
+  padding: 0;
+  opacity: 0.6;
   transition: opacity 0.3s ease;
 }
-
-/* ——— Affichage des icônes / textes ——— */
-/* Par défaut (non scrolled) : on cache les icônes */
-#main-nav ul li a .sidebar-icon,
-#main-nav ul li a i
- {
-  display: none;
-}
-
-#main-nav ul li a .nav-text {
-  display: inline;
-}
-
-/* En état “scrolled” : on cache le texte, on affiche l’icône */
 #main-nav.scrolled ul:hover {
-  opacity: 1;              /* plein opaque au survol */
+  opacity: 1;
 }
 
-#main-nav.scrolled ul li a .nav-text {
-  display: none;
+/* ——— 3) Inverser texte ↔ icônes en mode vertical ——— */
+#main-nav.scrolled li a .nav-text {
+  display: none;     /* plus de texte */
 }
-#main-nav.scrolled ul li a .sidebar-icon {
-  display: block;
-  width: 2rem;
-  height: 2rem;
-  padding: 0.4rem;         /* espace autour de l’icône dans le cercle */
-  border-radius: 50%;      /* cercle parfait */
+#main-nav.scrolled li a .sidebar-icon {
+  display: block;    /* on montre l’icône */
+  width: 1.8rem;
+  height: 1.8rem;
   object-fit: contain;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+/* ——— 4) Cercle “glassmorphism” autour des icônes ——— */
+#main-nav.scrolled li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
   background: rgba(255,255,255,0.2);
   border: 1px solid rgba(255,255,255,0.4);
   backdrop-filter: blur(8px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
   transition: transform 0.3s ease, background 0.3s ease;
 }
-
-/* ——— Glassmorphism du bouton ——— */
-#main-nav.scrolled ul li a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.6rem;
-  height: 2.6rem;
-  background: rgba(255,255,255,0.2);
-  border: 1px solid rgba(255,255,255,0.4);
-  border-radius: 50%;
-  transform: translateX(-70%);
-  transition: transform 0.3s ease, background 0.3s ease;
-}
-#main-nav.scrolled ul li:hover a {
-  transform: translateX(10%);
-}
-
-/* ——— Stylisation de l’icône FontAwesome ——— */
-#main-nav.scrolled ul li a i {
-  font-size: 1.2rem;
-  color: #c71585;
-  background: rgba(255,182,193,0.6);
-  border-radius: 50%;
-  padding: 0.3rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  transition: background 0.3s ease, color 0.3s ease;
-}
-#main-nav.scrolled ul li:hover a i {
-  background: rgba(255,182,193,1);
-  color: #fff;
-}
-
-/* 5) Hover sur chaque icône */
-#main-nav.scrolled ul li a:hover .sidebar-icon {
-  background: rgba(227,64,151,0.35);
-  border-color: rgba(255,255,255,0.6);
-}
-
-/* 6) Au dessus de l’icône (optionnel) : tirer une bordure colorée */
-#main-nav.scrolled ul li.active a .sidebar-icon {
-  box-shadow: 0 0 0 3px var(--color-accent-2);
+#main-nav.scrolled li:hover a {
+  background: rgba(255,255,255,0.35);
+  transform: translateX(0.2rem);
 }
 
 
@@ -261,14 +322,15 @@ nav a.active::after {
    ========================================================================== */
 .hero {
   /* prends presque tout l’écran */
-  min-height: 80vh; 
-  margin-top: 0;     
+  min-height: 91vh;
+  margin-top: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
 }
+
 .hero::after {
   content: "";
   position: absolute;
@@ -300,9 +362,18 @@ nav a.active::after {
 }
 
 /* on décale chaque mot de 0.3s */
-.word-by-word.animate span:nth-child(1) { animation-delay: 0.3s; }
-.word-by-word.animate span:nth-child(2) { animation-delay: 0.6s; }
-.word-by-word.animate span:nth-child(3) { animation-delay: 0.9s; }
+.word-by-word.animate span:nth-child(1) {
+  animation-delay: 0.3s;
+}
+
+.word-by-word.animate span:nth-child(2) {
+  animation-delay: 0.6s;
+}
+
+.word-by-word.animate span:nth-child(3) {
+  animation-delay: 0.9s;
+}
+
 /* etc. selon ton nombre de mots… */
 
 /* keyframes inchangés */
@@ -323,14 +394,9 @@ nav a.active::after {
 
 /* rien d’autre ici, les animations seront en ligne (JS) */
 
-
-
 /* ================
    About
    ================ */
-/* ====================================================
-   Section Persona “À propos de moi”
-   ==================================================== */
 .about-section.persona {
   padding: 4em 2em;
   background: var(--color-bg-light);
@@ -348,15 +414,15 @@ nav a.active::after {
 .about-image {
   flex: 0 0 400px;
 }
+
 .about-image img {
   width: 100%;
   height: 500px;
   aspect-ratio: 1/1;
   object-fit: cover;
-  border-radius: 2rem  2rem  0rem  2rem;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  border-radius: 2rem 2rem 0rem 2rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
-
 
 /* TEXTE à droite */
 .about-content {
@@ -368,6 +434,7 @@ nav a.active::after {
   margin: 0;
   color: var(--color-text);
 }
+
 .about-meta {
   font-weight: 400;
   font-size: 1rem;
@@ -407,10 +474,12 @@ nav a.active::after {
     flex-direction: column;
     text-align: center;
   }
+
   .about-image {
     margin: 0 auto 2rem;
     max-width: 300px;
   }
+
   .about-content h3 {
     border: none;
   }
@@ -443,10 +512,12 @@ h2 {
   padding: 4em 2em;
   text-align: center;
 }
+
 .competences-section h2 {
   font-size: 2em;
   margin-bottom: 0.5em;
 }
+
 .competences-subtitle {
   color: var(--color-text-muted);
   margin-bottom: 2em;
@@ -462,7 +533,8 @@ h2 {
 
 /* Chaque catégorie a son titre et sa grille */
 .competences-category {
-  flex: 1 1 300px;       /* s’adapte, minimum 300px */
+  flex: 1 1 300px;
+  /* s’adapte, minimum 300px */
   max-width: 350px;
 }
 
@@ -494,11 +566,13 @@ h2 {
   transition: background 0.3s ease, transform 0.3s ease;
   cursor: default;
 }
+
 .competence-card i {
   font-size: 1.75rem;
   color: var(--color-accent-3);
   margin-bottom: 0.4rem;
 }
+
 .competence-card span {
   font-size: 0.85rem;
   font-weight: 600;
@@ -517,10 +591,39 @@ h2 {
     flex-direction: column;
     align-items: center;
   }
+
   .competences-category {
     max-width: none;
     width: 100%;
   }
+}
+
+/* 1) Taille du conteneur “inner” */
+#carouselIT .carousel-inner,
+#carouselOther .carousel-inner {
+  width: 550px;
+  /* change selon ton besoin */
+  height: 350px;
+  margin: 0 auto;
+}
+
+/* 2) Chaque “item” prend toute la place */
+#carouselIT .carousel-item,
+#carouselOther .carousel-item {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 3) Ton exp-card s’adapte à 100 % */
+#carouselIT .carousel-item .exp-card,
+#carouselOther .carousel-item .exp-card {
+  width: 100% !important;
+  height: 100% !important;
+  background-size: cover;
+  background-position: center;
 }
 
 
@@ -546,10 +649,14 @@ h2 {
 }
 
 .carte-projet img {
-  width: 100%;            /* occupe toute la largeur de la carte */
-  height: 200px;          /* fixe la hauteur (à ajuster) */
-  object-fit: cover;      /* recadre et zoom pour remplir */
-  display: block;         /* supprime l’espace blanc sous l’image */
+  width: 100%;
+  /* occupe toute la largeur de la carte */
+  height: 200px;
+  /* fixe la hauteur (à ajuster) */
+  object-fit: cover;
+  /* recadre et zoom pour remplir */
+  display: block;
+  /* supprime l’espace blanc sous l’image */
 }
 
 
@@ -563,6 +670,74 @@ h2 {
   color: #555;
 }
 
+/* Ne charge QUE ce qui personnalise Splide et tes cartes */
+#experience .exp-card {
+  width: 100%;
+  padding-top: 75%;
+  /* ratio 4:3 */
+  background-size: cover;
+  background-position: center;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* espace entre slides */
+.splide__slide {
+  padding: 0 0.5rem;
+}
+
+.splide__list {
+  margin: 0 -0.5rem;
+}
+
+#experience .exp-card img {
+  height: 200px;
+  /* fixe la hauteur */
+  object-fit: cover;
+}
+
+#experience .badge {
+  font-size: 0.9rem;
+  padding: 0.5em 1em;
+}
+
+#experience .exp-card {
+  width: 100%;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+#experience .exp-label {
+  background: rgba(255, 255, 255, 0.8);
+  color: #333;
+  padding: 0.3em 0.6em;
+  border-radius: 0.5em;
+  font-size: 0.9em;
+}
+
+/* Ajustements responsive */
+@media (max-width: 992px) {
+  #experience .exp-card {
+    height: 180px;
+  }
+}
+
+@media (max-width: 576px) {
+  #experience .exp-card {
+    height: 160px;
+  }
+}
+
+#carouselIT .carousel-control-prev-icon,
+#carouselIT .carousel-control-next-icon {
+  width: 2rem;
+  height: 2rem;
+  background-size: 100%, 100%;
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(103%) contrast(103%);
+}
 
 
 /* ==========================================================================
@@ -585,21 +760,65 @@ h2 {
 }
 
 /* Data-lang color mapping (case-insensitive) */
-.lang[data-lang="nodejs" i]      { background: #70a861; }
-.lang[data-lang="expressjs" i]   { background: #000000; }
-.lang[data-lang="reactjs" i]     { background: #61dafb; }
-.lang[data-lang="dart" i]        { background: #0175c2; }
-.lang[data-lang="c++" i]         { background: #00599c; }
-.lang[data-lang="cmake" i]       { background: #064f8c; }
-.lang[data-lang="java" i]        { background: #b07219; }
-.lang[data-lang="javafx" i]      { background: #2c2255; }
-.lang[data-lang="javascript" i]  { background: #f7df1e; }
-.lang[data-lang="docker" i]  { background: #2496ed; }
-.lang[data-lang="bash" i]        { background: #4eaa25; }
-.lang[data-lang="virtualbox" i]  { background: #183a61; }
-.lang[data-lang="css" i]         { background: #5599fe; }
-.lang[data-lang="trello" i]         { background: #5599fe; }
-.lang[data-lang="mongodb" i]         { background: #000000; }
+.lang[data-lang="nodejs" i] {
+  background: #70a861;
+}
+
+.lang[data-lang="expressjs" i] {
+  background: #000000;
+}
+
+.lang[data-lang="reactjs" i] {
+  background: #61dafb;
+}
+
+.lang[data-lang="dart" i] {
+  background: #0175c2;
+}
+
+.lang[data-lang="c++" i] {
+  background: #00599c;
+}
+
+.lang[data-lang="cmake" i] {
+  background: #064f8c;
+}
+
+.lang[data-lang="java" i] {
+  background: #b07219;
+}
+
+.lang[data-lang="javafx" i] {
+  background: #2c2255;
+}
+
+.lang[data-lang="javascript" i] {
+  background: #f7df1e;
+}
+
+.lang[data-lang="docker" i] {
+  background: #2496ed;
+}
+
+.lang[data-lang="bash" i] {
+  background: #4eaa25;
+}
+
+.lang[data-lang="virtualbox" i] {
+  background: #183a61;
+}
+
+.lang[data-lang="css" i] {
+  background: #5599fe;
+}
+
+.lang[data-lang="trello" i] {
+  background: #5599fe;
+}
+
+.lang[data-lang="mongodb" i] {
+  background: #000000;
+}
 
 
 
@@ -649,23 +868,27 @@ h2 {
 .modal {
   display: none;
   position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: rgba(246, 244, 244, 0.3);
-  align-items: flex-start;          /* on colle en haut */
+  align-items: flex-start;
+  /* on colle en haut */
   justify-content: center;
-  padding-top: 2rem;                /* espace sous le haut de l’écran */
+  padding-top: 2rem;
+  /* espace sous le haut de l’écran */
   z-index: 2000;
 }
 
 /* 2) Modal-content : max-height + scroll interne */
 .modal-content {
-  background: rgba(255,255,255,0.15);
-  border: 1px solid rgba(255,255,255,0.3);
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(10px) saturate(180%);
   -webkit-backdrop-filter: blur(10px) saturate(180%);
   border-radius: 16px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 600px;
 
@@ -696,6 +919,7 @@ h2 {
   color: #666;
   transition: color .2s;
 }
+
 .modal-close:hover {
   color: #c71585;
 }
@@ -707,12 +931,12 @@ h2 {
    Modal Glassmorphism
    ===================== */
 .modal-content.vm-modal {
-  background: rgba(255,255,255,0.15);
-  border: 1px solid rgba(255,255,255,0.3);
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(10px) saturate(180%);
   -webkit-backdrop-filter: blur(10px) saturate(180%);
   border-radius: 16px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   padding: 2rem;
   width: 90%;
   max-width: 600px;
@@ -723,13 +947,16 @@ h2 {
 .vm-header {
   text-align: center;
 }
+
 .vm-icon {
   width: 60px;
   margin-bottom: 0.5rem;
 }
+
 .vm-header h2 {
   margin: 0.25em 0;
 }
+
 .vm-status {
   font-style: italic;
   color: #555;
@@ -743,6 +970,7 @@ h2 {
   justify-content: center;
   margin-bottom: 1rem;
 }
+
 .badge {
   display: inline-flex;
   align-items: center;
@@ -752,20 +980,76 @@ h2 {
   font-size: 0.85em;
   font-weight: bold;
 }
-.badge.bash { background: #4eaa25; color: #fff; }
-.badge.virtualBox  { background: #183a61; color: #fff; }
-.badge.java { background: #b07219; color: #fff; }
-.badge.javafx  { background: #2c2255; color: #fff; }
-.badge.docker { background: #2496ed; color: #fff; }
-.badge.dart { background: #0175c2; color: #fff; }
-.badge.css { background: #5599fe; color: #fff; }
-.badge.javascript { background: #f7df1e; color: #fff; }
-.badge.trello { background: #5599fe; color: #fff; }
-.badge.bash { background: #4eaa25; color: #fff; }
-.badge.nodejs { background: #70a861; color: #fff; }
-.badge.reactjs { background: #61dafb; color: #fff; }
-.badge.expressjs { background: #000000; color: #fff; }
-.badge.mongodb { background: #000000; color: #4eaa25; }
+
+.badge.bash {
+  background: #4eaa25;
+  color: #fff;
+}
+
+.badge.virtualBox {
+  background: #183a61;
+  color: #fff;
+}
+
+.badge.java {
+  background: #b07219;
+  color: #fff;
+}
+
+.badge.javafx {
+  background: #2c2255;
+  color: #fff;
+}
+
+.badge.docker {
+  background: #2496ed;
+  color: #fff;
+}
+
+.badge.dart {
+  background: #0175c2;
+  color: #fff;
+}
+
+.badge.css {
+  background: #5599fe;
+  color: #fff;
+}
+
+.badge.javascript {
+  background: #f7df1e;
+  color: #fff;
+}
+
+.badge.trello {
+  background: #5599fe;
+  color: #fff;
+}
+
+.badge.bash {
+  background: #4eaa25;
+  color: #fff;
+}
+
+.badge.nodejs {
+  background: #70a861;
+  color: #fff;
+}
+
+.badge.reactjs {
+  background: #61dafb;
+  color: #fff;
+}
+
+.badge.expressjs {
+  background: #000000;
+  color: #fff;
+}
+
+.badge.mongodb {
+  background: #000000;
+  color: #4eaa25;
+}
 
 
 
@@ -782,14 +1066,21 @@ h2 {
   padding: 0;
   margin: 0.5em 0 1em 0;
 }
+
 .vm-points li {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   margin-bottom: 0.5em;
 }
-.vm-positive li i  { color: #4CAF50; }
-.vm-negative li i  { color: #E74C3C; }
+
+.vm-positive li i {
+  color: #4CAF50;
+}
+
+.vm-negative li i {
+  color: #E74C3C;
+}
 
 /* Note perso */
 .vm-note {
@@ -814,7 +1105,11 @@ h2 {
   transition: background 0.2s;
   margin: 0 auto;
 }
-.vm-cta i { font-size: 1.1em; }
+
+.vm-cta i {
+  font-size: 1.1em;
+}
+
 .vm-cta:hover {
   background: #444d56;
 }
@@ -831,6 +1126,7 @@ h2 {
   cursor: pointer;
   transition: color 0.2s;
 }
+
 .modal-close:hover {
   color: #c71585;
 }
@@ -846,12 +1142,14 @@ h2 {
 .detail-nav {
   padding: 1rem 2rem;
 }
+
 .detail-nav a {
   color: #c71585;
   font-weight: bold;
   text-decoration: none;
   transition: color 0.2s ease;
 }
+
 .detail-nav a:hover {
   color: #8b0000;
 }
@@ -861,8 +1159,10 @@ h2 {
   max-width: 800px;
   margin: 2rem auto;
   padding: 0 1rem;
-  opacity: 0;                     /* invisible au départ */
-  transition: opacity 0.6s ease;  /* fade-in */
+  opacity: 0;
+  /* invisible au départ */
+  transition: opacity 0.6s ease;
+  /* fade-in */
 }
 
 /* 3. Titre du projet */
@@ -903,139 +1203,6 @@ body.projet-loaded .detail-projet {
   opacity: 1;
 }
 
-
-/* ================================
-   Expérience Professionnelle 2-blocs
-   ================================ */
-/* Carrousel horizontal */
-/* conteneur de chaque bloc */
-/* taille et ratio des “exp-card” */
-.exp-card {
-  flex: 0 0 250px;
-  height: 200px;      /* fixe la hauteur souhaitée */
-  background-size: cover;
-  background-position: center;
-  border-radius: 1rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-/* étiquette sous chaque slide */
-.exp-label {
-  background: rgba(255, 255, 255, 0.8);
-  color: #333;
-  padding: 0.3em 0.6em;
-  border-radius: 0.5em;
-  font-size: 0.9em;
-}
-
-
-.exp-block {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  margin-bottom: 3rem;
-}
-/* inverse texte/carousel pour le 1er bloc */
-.exp-block--reverse {
-  flex-direction: row-reverse;
-}
-
-/* zone texte */
-.exp-text {
-  flex: 1;
-}
-
-.exp-text-bottom {
-  flex: 1;
-}
-
-.exp-text-bottom h3,
-.exp-text h3 {
-  font-size: 1.75rem;
-  margin-bottom: 0.5rem;
-  color: #8b0000;
-}
-
-.exp-text p {
-  line-height: 1.6;
-  color: #4b3a3a;
-}
-
-/* carousel */
-.carousel-wrapper {
-  display: flex;
-  align-items: center;
-  flex: 1;
-  height: 320px;            /* <- même valeur que la hauteur de tes cartes */
-  overflow: hidden;  
-}
-.carousel-track {
-  display: flex;
-  align-items: center;    /* centre verticalement tes cartes */
-  overflow-x: auto;       /* scroll horizontal activé */
-  overflow-y: hidden;     /* scroll vertical désactivé */
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  gap: 1rem;
-  padding: 0.5rem 0;
-  scroll-behavior: smooth;
-  flex: 1;
-  -ms-overflow-style: none;  /* IE + Edge */
-  scrollbar-width: none;     /* Firefox */
-}
-
-.carousel-track::-webkit-scrollbar {
-  display: none;             /* Chrome, Safari, Opera */
-}
-
-.exp-card {
-  flex: 0 0 320px;       /* ajuste ici la largeur des blocs */
-  aspect-ratio: 1/1;     /* carré */
-  scroll-snap-align: center;
-  background-size: cover;
-  background-position: center;
-  border-radius: 1.5rem;
-  box-shadow: 0 6px 12px rgba(0,0,0,0.07);
-  position: relative;
-  transition: transform .3s, box-shadow .3s;
-
-}
-
-.exp-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.12);
-}
-/* étiquette sous chaque carte */
-.exp-label {
-  position: absolute;
-  bottom: 0.8rem;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(255,255,255,0.8);
-  padding: 0.3em 0.6em;
-  border-radius: 0.5em;
-  font-size: 0.9em;
-  color: #333;
-}
-
-/* boutons de navigation */
-.carousel-btn {
-  background: #8b0000b6;
-  border: none;
-  color: #fff;
-  font-size: 1.5rem;
-  width: 2rem;
-  height: 2rem;
-  border-radius: 50%;
-  cursor: pointer;
-  flex-shrink: 0;
-  transition: background .2s;
-}
-.carousel-btn:hover {
-  background: rgb(#8b0000);
-}
-
-
 /* ==========================================================================
    8. Carrousels d’expériences
    ========================================================================== */
@@ -1045,9 +1212,11 @@ body.projet-loaded .detail-projet {
   gap: 2rem;
   margin-bottom: 3rem;
 }
+
 .exp-block--reverse {
   flex-direction: row-reverse;
 }
+
 .exp-text,
 .carousel-wrapper {
   flex: 1 1 300px;
@@ -1063,11 +1232,13 @@ body.projet-loaded .detail-projet {
   background: var(--color-bg-medium);
   text-align: center;
 }
+
 .parcours-section h2 {
   font-size: 2em;
   margin-bottom: 0.5em;
   color: var(--color-text);
 }
+
 .parcours-subtitle {
   color: var(--color-text-muted);
   margin-bottom: 2em;
@@ -1079,6 +1250,7 @@ body.projet-loaded .detail-projet {
   margin: 0 auto;
   padding-left: 2em;
 }
+
 /* la ligne verticale */
 .parcours-timeline::before {
   content: "";
@@ -1096,6 +1268,7 @@ body.projet-loaded .detail-projet {
   display: flex;
   align-items: flex-start;
 }
+
 /* le cercle repère */
 .parcours-item::before {
   content: "";
@@ -1108,6 +1281,7 @@ body.projet-loaded .detail-projet {
   border: 2px solid var(--color-accent-3);
   border-radius: 50%;
 }
+
 /* date */
 .parcours-date {
   flex: 0 0 120px;
@@ -1116,16 +1290,19 @@ body.projet-loaded .detail-projet {
   color: var(--color-text);
   margin-right: 1em;
 }
+
 /* contenu de l’étape */
 .parcours-content {
   flex: 1;
   text-align: left;
 }
+
 .parcours-content h3 {
   margin: 0 0 0.3em;
   font-size: 1.25rem;
   color: var(--color-text);
 }
+
 .parcours-content p {
   margin: 0;
   color: var(--color-text-muted);
@@ -1137,16 +1314,20 @@ body.projet-loaded .detail-projet {
   .parcours-timeline {
     padding-left: 1em;
   }
+
   .parcours-timeline::before {
     left: 0.5em;
   }
+
   .parcours-item {
     flex-direction: column;
     padding-left: 1.5em;
   }
+
   .parcours-item::before {
     left: 0.5em;
   }
+
   .parcours-date {
     text-align: left;
     margin-bottom: 0.3em;
@@ -1164,11 +1345,13 @@ body.projet-loaded .detail-projet {
   text-align: center;
   background: var(--color-bg-surface, #fff);
 }
+
 .interets-section h2 {
   font-size: 2em;
   margin-bottom: 0.5em;
   color: var(--color-text);
 }
+
 .interets-subtitle {
   color: var(--color-text-muted);
   margin-bottom: 2em;

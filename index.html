@@ -5,37 +5,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio de Fatou kiné Gueye</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="experience.css">
-  <link rel="icon" type="image/png" href="favicon.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     integrity="sha512-p+XQn6T+VsnCH1Ub4cQrVlI5JYo3bB5q2KG6/bC2DqN7YFkt4kWbeT/J4JVl3jCells6Vw5gWEdkw77jAcD8Mg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link href="https://fonts.googleapis.com/css2?
-    family=Poppins:wght@600;700&family=Open+Sans:wght@300;400&family=Pacifico&display=swap" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"rel="stylesheet"
-/>
-
+  <!-- Splide core CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" />
 </head>
 
-<!-- OVERLAY “Please wait…” -->
-<!-- OVERLAY “Welcome to my portfolio” -->
-<div id="loading-overlay">
-  <div class="blob blob1"></div>
-  <div class="blob blob2"></div>
-  <div class="blob blob3"></div>
-  <div class="blob blob4"></div>
-  <div class="blob blob5"></div>
-  <div class="blob blob6"></div>
-  <div class="blob blob7"></div>
-
-  <div class="overlay-content">
-    <h3>Charging...</h3>
-  </div>
-</div>
-
-
 <body>
+
+  <!-- Loading Overlay -->
+  <div id="loading-overlay">
+    <h3 id="wave-text" class="wave-text"> <span>Loading</span><span>Portfolio</span>
+    </h3>
+  </div>
+
   <nav id="main-nav">
     <ul>
       <li>
@@ -89,8 +75,6 @@
     </ul>
   </nav>
 
-
-
   <header class="hero" id="accueil">
     <h1 class="word-by-word">Welcome to my Portfolio</h1>
     <!--<p class="slogan">Cybersecurity Apprentice</p> -->
@@ -106,8 +90,6 @@
       </a>
     </p>
   </header>
-
-
 
   <section id="about" class="about-section persona">
     <div class="about-container">
@@ -226,109 +208,6 @@
       </div>
     </div>
   </section>
-
-
-<section id="experience" class="experience-section container py-5">
-
-  <div class="exp-header text-center mb-4">
-    <h2>Mon parcours</h2>
-    <p class="exp-subtitle">
-      Du front-end à la cybersécurité, découvrez mes missions et responsabilités.
-    </p>
-  </div>
-
-  <!-- Bloc 1 : Expériences Informatiques (texte à droite) -->
-  <div class="row align-items-center mb-5">
-    <div class="col-lg-6">
-      <div id="carouselIT" class="carousel slide" data-bs-interval="false">
-        <div class="carousel-inner">
-          <!-- Slide 1 -->
-          <div class="carousel-item active">
-            <div class="d-block w-100 exp-card" 
-                 style="background-image:url('assets/logo-cyber.png')"></div>
-            <div class="carousel-caption d-none d-md-block">
-              <span class="exp-label">Apprentie Cybersécurité</span>
-            </div>
-          </div>
-          <!-- Slide 2 -->
-          <div class="carousel-item">
-            <div class="d-block w-100 exp-card" 
-                 style="background-image:url('assets/logo-frontend.png')"></div>
-            <div class="carousel-caption d-none d-md-block">
-              <span class="exp-label">Test</span>
-            </div>
-          </div>
-           <div class="carousel-item">
-            <div class="d-block w-100 exp-card" 
-                 style="background-image:url('assets/logo-frontend.png')"></div>
-            <div class="carousel-caption d-none d-md-block">
-              <span class="exp-label">3</span>
-            </div>
-          </div> <div class="carousel-item">
-            <div class="d-block w-100 exp-card" 
-                 style="background-image:url('assets/logo-frontend.png')"></div>
-            <div class="carousel-caption d-none d-md-block">
-              <span class="exp-label">4</span>
-            </div>
-          </div>
-          <!-- … ajoute autant de .carousel-item que nécessaire … -->
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselIT" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon"></span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselIT" data-bs-slide="next">
-          <span class="carousel-control-next-icon"></span>
-        </button>
-      </div>
-    </div>
-    <div class="col-lg-6">
-      <h3>Expériences Informatiques</h3>
-      <p>
-        J’ai travaillé sur pipelines CI/CD, sécurisation de conteneurs Docker et
-        administration de réseaux en OpenBSD.
-      </p>
-    </div>
-  </div>
-
-  <!-- Bloc 2 : Autres expériences (texte à gauche) -->
-  <div class="row align-items-center mb-5">
-    <div class="col-lg-6 order-lg-2">
-      <div id="carouselOther" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="d-block w-100 exp-card" 
-                 style="background-image:url('assets/logo-asso.png')"></div>
-            <div class="carousel-caption d-none d-md-block">
-              <span class="exp-label">Bénévolat Associatif</span>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="d-block w-100 exp-card" 
-                 style="background-image:url('assets/logo-vente.png')"></div>
-            <div class="carousel-caption d-none d-md-block">
-              <span class="exp-label">Conseillère de Vente</span>
-            </div>
-          </div>
-          <!-- … d’autres slides … -->
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselOther" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon"></span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselOther" data-bs-slide="next">
-          <span class="carousel-control-next-icon"></span>
-        </button>
-      </div>
-    </div>
-    <div class="col-lg-6 order-lg-1">
-      <h3>Autres expériences</h3>
-      <p>
-        Bénévolat associatif, vente en boutique et ateliers numériques pour
-        les seniors.
-      </p>
-    </div>
-  </div>
-
-</section>
 
   <section id="projets">
     <h2>Mes projets</h2>
@@ -665,6 +544,66 @@
     </div>
   </div>
 
+<section id="experience" class="container py-5">
+  <div class="row">
+    <!-- la colonne du carousel -->
+    <div class="col-lg-6">
+      <div class="splide" id="splide-experience">
+        <div class="splide__track">
+          <ul class="splide__list">
+            <!-- chaque slide porte son texte en data-desc -->
+            <li class="splide__slide" data-desc="J’ai travaillé sur pipelines CI/CD, sécurisation de conteneurs Docker et administration de réseaux en OpenBSD.">
+              <div class="exp-card" style="background-image:url('assets/logo-cyber.png')"></div>
+            </li>
+            <li class="splide__slide" data-desc="Développement front-end en Vue.js et React, optimisation des performances et accessibilité.">
+              <div class="exp-card" style="background-image:url('assets/logo-frontend.png')"></div>
+            </li>
+            <li class="splide__slide" data-desc="Participation à la mise en place d’infrastructures Cloud sur AWS et Terraform.">
+              <div class="exp-card" style="background-image:url('assets/logo-cloud.png')"></div>
+            </li>
+            <!-- ajoute autant de slides que tu veux -->
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- la colonne du texte -->
+    <div class="col-lg-6 d-flex flex-column justify-content-center">
+      <h3>Expériences Informatiques</h3>
+      <p id="exp-description" class="text-muted"></p>
+    </div>
+  </div>
+</section>
+
+  <!-- … le reste de la section … -->
+</section>
+    <div class="row mb-5">
+      <div class="col-lg-6 order-lg-2">
+        <div id="carouselOther" class="carousel slide" data-bs-ride="false" data-bs-interval="false">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="exp-card" style="background-image:url('assets/logo-asso.png')"></div>
+              <div class="carousel-caption d-none d-md-block">
+                <span class="exp-label">Bénévolat Associatif</span>
+              </div>
+            </div>
+            <!-- autres slides… -->
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselOther" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselOther" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </button>
+        </div>
+      </div>
+      <div class="col-lg-6 order-lg-1">
+        <h3>Autres expériences</h3>
+        <p>…</p>
+      </div>
+    </div>
+  </section>
+
   <section id="parcours" class="parcours-section">
     <h2>Parcours Académique</h2>
     <p class="parcours-subtitle">
@@ -748,8 +687,30 @@
     </form>
   </section>
 
-  <script src="main.js" defer></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Initialise Splide sur ton slider <div class="splide">…
+      const splide = new Splide('.splide', {
+        type: 'loop',
+        perPage: 3,
+        perMove: 1,
+        gap: '1rem',
+        arrows: true,
+        pagination: false,
+        breakpoints: {
+          992: { perPage: 2 },
+          576: { perPage: 1 },
+        },
+      });
+
+      splide.mount();
+    });
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Splide core JS -->
+  <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+  <script src="main.js" defer></script>
 </body>
 
 <!-- À placer juste avant la </body> -->
