@@ -34,6 +34,7 @@ h3 {
   color: var(--color-text);
 }
 
+
 p,
 li,
 .subtitle {
@@ -598,35 +599,81 @@ h2 {
   }
 }
 
-/* 1) Taille du conteneur “inner” */
-#carouselIT .carousel-inner,
-#carouselOther .carousel-inner {
-  width: 550px;
-  /* change selon ton besoin */
-  height: 350px;
+/* ================================
+   Section Éducation & Experiences
+   ================================ */
+.edu-exp-section {
+  padding: 4rem 1rem;
+}
+.edu-exp-section .container {
+  max-width: 1000px;
   margin: 0 auto;
 }
-
-/* 2) Chaque “item” prend toute la place */
-#carouselIT .carousel-item,
-#carouselOther .carousel-item {
-  width: 100%;
-  height: 100%;
+.edu-exp-row {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
 }
 
-/* 3) Ton exp-card s’adapte à 100 % */
-#carouselIT .carousel-item .exp-card,
-#carouselOther .carousel-item .exp-card {
-  width: 100% !important;
-  height: 100% !important;
-  background-size: cover;
-  background-position: center;
+/* colonnes */
+.edu-col,
+.exp-col {
+  flex: 1 1 300px;
+}
+
+/* Titres de colonne */
+.edu-col h3,
+.exp-col h3 {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+  color: #8b0000;
+}
+/* si tu veux deux couleurs différentes */
+.exp-col h3 { color: #8b0000;
+ }
+
+/* Timeline List */
+.timeline {
+  margin: 0;
+  padding: 0;
+}
+.timeline .item {
+  display: flex;
+  margin-bottom: 2rem;
+}
+.timeline .date {
+  flex: 0 0 100px;
+  font-weight: bold;
+  color: var(--color-accent-3);
+}
+.timeline .details {
+  flex: 1;
+  margin-left: 1rem;
+}
+.timeline .details ul {
+  margin: .5rem 0 0 1rem;
+  padding: 0;
+  list-style-type: disc;
+}
+.timeline .details li {
+  margin-bottom: .5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .edu-exp-row {
+    flex-direction: column;
+  }
+  .timeline .item {
+    flex-direction: column;
+  }
+  .timeline .date {
+    margin-bottom: .5rem;
+  }
 }
 
 
+/* 2) Chaque “item” prend toute la place *
 /* ==========================================================================
    8. Project Gallery
    ========================================================================== */
@@ -670,74 +717,6 @@ h2 {
   color: #555;
 }
 
-/* Ne charge QUE ce qui personnalise Splide et tes cartes */
-#experience .exp-card {
-  width: 100%;
-  padding-top: 75%;
-  /* ratio 4:3 */
-  background-size: cover;
-  background-position: center;
-  border-radius: 1rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-/* espace entre slides */
-.splide__slide {
-  padding: 0 0.5rem;
-}
-
-.splide__list {
-  margin: 0 -0.5rem;
-}
-
-#experience .exp-card img {
-  height: 200px;
-  /* fixe la hauteur */
-  object-fit: cover;
-}
-
-#experience .badge {
-  font-size: 0.9rem;
-  padding: 0.5em 1em;
-}
-
-#experience .exp-card {
-  width: 100%;
-  height: 200px;
-  background-size: cover;
-  background-position: center;
-  border-radius: 1rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-#experience .exp-label {
-  background: rgba(255, 255, 255, 0.8);
-  color: #333;
-  padding: 0.3em 0.6em;
-  border-radius: 0.5em;
-  font-size: 0.9em;
-}
-
-/* Ajustements responsive */
-@media (max-width: 992px) {
-  #experience .exp-card {
-    height: 180px;
-  }
-}
-
-@media (max-width: 576px) {
-  #experience .exp-card {
-    height: 160px;
-  }
-}
-
-#carouselIT .carousel-control-prev-icon,
-#carouselIT .carousel-control-next-icon {
-  width: 2rem;
-  height: 2rem;
-  background-size: 100%, 100%;
-  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(103%) contrast(103%);
-}
 
 
 /* ==========================================================================
@@ -1404,43 +1383,76 @@ body.projet-loaded .detail-projet {
 /* ==========================================================================
    9. Contact Form & Email Badge
    ========================================================================== */
-#contact .email {
+/* ============================
+   Section Contact “Say hello” 
+   ============================ */
+.contact-section {
+  background: #c3c3bf;        /* fond sombre */
+  color: #F5F5DC;             /* texte clair */
+  padding: 4rem 1rem;         
+  position: relative;
+}
+.contact-section .contact-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+.contact-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+.contact-section .contact-btn {
   display: inline-block;
-  background: #a0512d2f;
-  padding: 0.5em 1em;
-  border-radius: 20px;
-  margin-top: 0.5em;
-}
-
-.form-contact {
-  margin-top: 1em;
-  display: flex;
-  flex-direction: column;
-  gap: 1em;
-}
-
-.form-contact input,
-.form-contact textarea {
-  width: 100%;
-  padding: 0.75em;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  font-size: 1em;
-}
-
-.form-contact button {
-  background: #925f47;
-  color: #fff;
+  background: #e7e5e5;
+  color: #252627;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  padding: 0.75rem 2rem;
   border: none;
-  padding: 0.75em 1.5em;
-  border-radius: 5px;
-  font-size: 1em;
-  cursor: pointer;
-  transition: background 0.3s ease;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 1rem;
+  transition: background .3s;
+  margin-bottom: 2rem;
+}
+.contact-section .contact-btn:hover {
+  background: #fff;
 }
 
-.form-contact button:hover {
-  background: #a0522d;
+/* Icônes réseaux sociales */
+.contact-section .social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+.contact-section .social-icons a {
+  color: #fff;
+  font-size: 1.5rem;
+  transition: color .3s;
+}
+.contact-section .social-icons a:hover {
+  color: #c71585;
+}
+
+/* Bouton “scroll to top” */
+.contact-section .scroll-to-top {
+  position: absolute;
+  right: 2rem;
+  bottom: 2rem;
+  width: 3rem;
+  height: 3rem;
+  border: 2px solid #333333;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333333;
+  text-decoration: none;
+  transition: background .3s, color .3s;
+}
+.contact-section .scroll-to-top:hover {
+  background: #333333;
+  color: #fff;
 }
 
 /* ==============================

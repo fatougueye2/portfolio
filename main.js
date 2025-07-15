@@ -28,7 +28,7 @@ window.addEventListener('load', () => {
   const heading = document.querySelector('.word-by-word');
 
   // 1) on attend 5s puis on déclenche la disparition de l’overlay
-  setTimeout(() => overlay.classList.add('fade-out'), 1200);
+  setTimeout(() => overlay.classList.add('fade-out'), 2000);
 
   // 2) dès que le fade-out CSS (1s) est terminé, on construit et anime le texte
   overlay.addEventListener('transitionend', () => {
