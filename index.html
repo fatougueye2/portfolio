@@ -218,6 +218,57 @@
         </div>
       </div>
 
+<div class="deconstructed-card">  
+  <!-- 1. Calque de fond (blanc / surface) -->
+  <div class="card-layer card-background"></div>
+
+  <!-- 2. Calque image (ton visuel projet en background) -->
+  <div
+    class="card-layer card-image"
+    style="background-image:url('assets/virtualBox.webp')"
+  ></div>
+
+  <!-- 3. Calque contour SVG (optionnel, pour l’effet trait animé) -->
+  <div class="card-layer card-frame">
+    <svg viewBox="0 0 300 400" class="frame-svg">
+      <rect
+        x="1" y="1"
+        width="298" height="398"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-dasharray="1200"
+        stroke-dashoffset="1200"
+        class="frame-path"
+      />
+    </svg>
+  </div>
+
+  <!-- 4. Calque contenu texte -->
+  <div class="card-layer card-content">
+    <div class="fragment-meta">
+      <div class="meta-line"></div>
+      <div class="meta-text">— EXPÉRIENCE</div>
+    </div>
+    <h3 class="content-text">Titre du projet</h3>
+    <p class="content-subtext">
+      Courte description ou rôle principal sur ce projet.
+    </p>
+    <div class="fragment-body">
+      <p class="content-text">
+        Quelques détails techniques ou apprentissages clés…
+      </p>
+    </div>
+    <div class="fragment-cta">
+      <a href="#" class="cta-link">
+        <span class="cta-box"></span>
+        <span class="cta-text">Voir +</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+
       <!-- Application de gestion -->
       <div class="carte-projet" data-modal="modal-gestion">
         <img src="assets/Trello-Logo-2016-2021.jpg" alt="Gestion Projets">

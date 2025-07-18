@@ -683,38 +683,237 @@ h2 {
   gap: 2em;
 }
 
+/* Carte projet : fond neutre issu de tes variables */
 .carte-projet {
-  background: #fff;
-  border-radius: 10px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-bg-medium);
+  border-radius: 0.75rem;
   overflow: hidden;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  transition: background-color 0.3s, transform 0.3s;
 }
 
+/* Effet au survol : couleur d’accent légère */
 .carte-projet:hover {
-  transform: translateY(-5px);
+  background-color: var(--color-accent-1);
+  transform: translateY(-4px);
 }
 
+/* Image en haut de la carte (pas de changement si tu veux garder l’image entière) */
 .carte-projet img {
-  width: 100%;
-  /* occupe toute la largeur de la carte */
-  height: 200px;
-  /* fixe la hauteur (à ajuster) */
-  object-fit: cover;
-  /* recadre et zoom pour remplir */
   display: block;
-  /* supprime l’espace blanc sous l’image */
+  width: 100%;
+  height: 200px;              /* adapte si besoin */
+  object-fit: cover;
+  border-bottom: 1px solid var(--color-bg-medium);
 }
 
-
+/* Titre et description conservent leurs couleurs, mais tu peux les pousser un peu */
 .carte-projet h3 {
-  margin: 0.5em 1em;
-  color: #c71585;
+  color: var(--color-text);
+}
+.carte-projet p {
+  color: var(--color-text-muted);
 }
 
-.carte-projet p {
-  margin: 0 1em 1em;
+/* Variante : un léger dégradé d’accent */
+.carte-projet.gradient {
+  background: linear-gradient(
+    135deg,
+    var(--color-accent-1) 0%,
+    var(--color-accent-2) 100%
+  );
+}
+
+.card {
+  position: relative;
+  width: 260px;
+  height: 360px;
+  background: #fff;
+  cursor: pointer;
+  overflow: hidden;
+}
+.card-frame svg rect {
+  transition: stroke-dashoffset .8s ease;
+}
+.card:hover .card-frame svg rect {
+  stroke-dashoffset: 0;
+}
+
+.card-content {
+  position: absolute;
+  inset: 20px;
+  opacity: 0;
+  transition: opacity .5s ease .4s, transform .5s ease .4s;
+  transform: translateY(20px);
+  display: flex;
+  flex-direction: column;
+}
+.card:hover .card-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.meta-line {
+  display: block;
+  width: 30px;
+  height: 2px;
+  background: #333;
+  margin-bottom: 10px;
+}
+.meta {
+  font-family: monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
   color: #555;
+  margin-bottom: 1rem;
+}
+
+
+.title {
+  font-size: 1.5rem;
+  margin: 0 0 1rem;
+}
+.description {
+  flex: 1;
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.4;
+}
+.cta {
+  font-family: monospace;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  color: #333;
+  text-decoration: none;
+  position: relative;
+}
+.cta::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #333;
+  transition: width .3s ease;
+}
+.cta:hover::before {
+  width: 100%;
+}
+
+/* 1) État initial : texte caché et 10px plus bas */
+.deconstructed-card .content-text,
+.deconstructed-card .content-subtext {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+/* 2) Au hover : texte visible et à sa place */
+.deconstructed-card:hover .content-text,
+.deconstructed-card:hover .content-subtext {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.05s; /* tu peux ajuster le delay */
+}
+
+.deconstructed-card .fragment-body .content-text {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+.deconstructed-card:hover .fragment-body .content-text {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.1s;
+}
+
+.deconstructed-card {
+  position: relative;
+  width: var(--card-width);
+  height: var(--card-height);
+  transform-style: preserve-3d;
+  perspective: 1200px;
+  cursor: pointer;
+  transition: transform var(--transition-slow);
+}
+
+/* Tous les calques ont la même taille */
+.card-layer {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  transition: transform var(--transition-slow),
+              opacity   var(--transition-slow);
+}
+
+/* Fond blanc */
+.card-background {
+  background: var(--color-surface);
+  z-index: 0;
+}
+
+/* Image du projet */
+.card-image {
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+}
+
+/* Contour SVG */
+.card-frame {
+  z-index: 2;
+  pointer-events: none;
+}
+.frame-path {
+  stroke-dashoffset: 1200;
+  transition: stroke-dashoffset 1.2s ease;
+}
+
+/* Contenu texte (masqué au départ) */
+.content-text,
+.content-subtext,
+.meta-line,
+.meta-text,
+.cta-text {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: 
+    opacity var(--transition-fast) var(--delay,0s),
+    transform var(--transition-fast) var(--delay,0s);
+}
+
+/* On décale les délais pour un “stagger” */
+.content-text         { --delay: 0.1s; }
+.content-subtext      { --delay: 0.2s; }
+.meta-line            { --delay: 0.15s; }
+.meta-text            { --delay: 0.25s; }
+.cta-text             { --delay: 0.3s; }
+
+/* Au hover : on anime tout */
+.deconstructed-card:hover .frame-path {
+  stroke-dashoffset: 0;
+}
+.deconstructed-card:hover .content-text,
+.deconstructed-card:hover .content-subtext,
+.deconstructed-card:hover .meta-line,
+.deconstructed-card:hover .meta-text,
+.deconstructed-card:hover .cta-text {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Particules/glyphes (optionnel) */
+.glyph-grid { /* … */}
+.letter-particle { /* … */ }
+
+/* Responsive si besoin */
+@media (max-width: 768px) {
+  :root {
+    --card-width: 260px;
+    --card-height: 360px;
+  }
 }
 
 
