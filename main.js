@@ -77,31 +77,31 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Ouvre la modal SEULEMENT quand on clique sur le lien Discover
-  document.querySelectorAll('.cta-link[data-modal]').forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      const id = link.dataset.modal;
-      document.getElementById(id)?.classList.add('show');
+    // Ouvre la modal SEULEMENT quand on clique sur le lien Discover
+    document.querySelectorAll('.cta-link[data-modal]').forEach(link => {
+        link.addEventListener('click', e => {
+            e.preventDefault();
+            const id = link.dataset.modal;
+            document.getElementById(id)?.classList.add('show');
+        });
     });
-  });
 
-  // Ferme si on clique sur le fond ou le bouton ×
-  document.querySelectorAll('.modal').forEach(modal => {
-    modal.addEventListener('click', e => {
-      if (e.target === modal || e.target.classList.contains('modal-close')) {
-        modal.classList.remove('show');
-      }
+    // Ferme si on clique sur le fond ou le bouton ×
+    document.querySelectorAll('.modal').forEach(modal => {
+        modal.addEventListener('click', e => {
+            if (e.target === modal || e.target.classList.contains('modal-close')) {
+                modal.classList.remove('show');
+            }
+        });
     });
-  });
 
-  // Ferme à la touche Échap
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') {
-      document.querySelectorAll('.modal.show')
-              .forEach(m => m.classList.remove('show'));
-    }
-  });
+    // Ferme à la touche Échap
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') {
+            document.querySelectorAll('.modal.show')
+                .forEach(m => m.classList.remove('show'));
+        }
+    });
 });
 
 
@@ -167,107 +167,78 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Deconstructed card
+// 4. Deconstructed card
 
 document.addEventListener("DOMContentLoaded", () => {
-    const card = document.querySelector(".deconstructed-card");
+  // ——— 1) Effet 3D sur TOUTES les cartes « deconstructed » ———
+  document.querySelectorAll(".deconstructed-card").forEach(card => {
+    card.addEventListener("mousemove", e => {
+      const rect = card.getBoundingClientRect();
+      const x    = (e.clientX - rect.left) / rect.width;
+      const y    = (e.clientY - rect.top)  / rect.height;
+      const xDeg = (y - 0.5) * 8;
+      const yDeg = (x - 0.5) * -8;
+      card.style.transform = `perspective(1200px) rotateX(${xDeg}deg) rotateY(${yDeg}deg)`;
 
-    card.addEventListener("mousemove", (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width;
-        const y = (e.clientY - rect.top) / rect.height;
-        const xDeg = (y - 0.5) * 8;
-        const yDeg = (x - 0.5) * -8;
-
-        card.style.transform = `perspective(1200px) rotateX(${xDeg}deg) rotateY(${yDeg}deg)`;
-
-        const layers = card.querySelectorAll(".card-layer");
-        layers.forEach((layer, index) => {
-            const depth = 30 * (index + 1);
-            const translateZ = depth;
-            const offsetX = (x - 0.5) * 10 * (index + 1);
-            const offsetY = (y - 0.5) * 10 * (index + 1);
-            layer.style.transform = `translate3d(${offsetX}px, ${offsetY}px, ${translateZ}px)`;
-        });
-
-        const letters = card.querySelectorAll(".letter");
-        letters.forEach((letter, index) => {
-            const offsetX = (x - 0.5) * (index % 2 === 0 ? 15 : -15);
-            const offsetY = (y - 0.5) * (index % 2 === 0 ? -10 : 10);
-            const rotation = (x - 0.5) * (index % 2 === 0 ? 5 : -5);
-            letter.style.transform = `translate(${offsetX}px, ${offsetY}px) rotate(${rotation}deg)`;
-
-            const shadow = letter.querySelector(".letter-shadow");
-            if (shadow) {
-                shadow.style.transform = `translate(${offsetX * 2}px, ${offsetY * 2}px)`;
-            }
-        });
+      card.querySelectorAll(".card-layer").forEach((layer, i) => {
+        const depth     = 30 * (i + 1);
+        const offsetX   = (x - 0.5) * 10 * (i + 1);
+        const offsetY   = (y - 0.5) * 10 * (i + 1);
+        layer.style.transform = `translate3d(${offsetX}px, ${offsetY}px, ${depth}px)`;
+      });
     });
 
     card.addEventListener("mouseleave", () => {
-        card.style.transform = "";
+      card.style.transform = "";
+      card.querySelectorAll(".card-layer")
+          .forEach(layer => layer.style.transform = "");
+    });
+  });
 
-        const layers = card.querySelectorAll(".card-layer");
-        layers.forEach((layer) => {
-            layer.style.transform = "";
-        });
+  // ——— 2) Glyph grid (si tu en as besoin) ———
+  document.querySelectorAll(".glyph-grid").forEach(grid => {
+    const glyphs = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*";
+    for (let i = 0; i < 50; i++) {
+      const g = document.createElement("div");
+      g.className = "glyph";
+      g.textContent = glyphs[Math.floor(Math.random()*glyphs.length)];
+      g.style.left            = `${Math.random()*100}%`;
+      g.style.top             = `${Math.random()*100}%`;
+      g.style.transform       = `rotate(${Math.random()*360}deg)`;
+      g.style.transitionDelay = `${Math.random()*0.5}s`;
+      grid.appendChild(g);
+    }
+  });
 
-        const letters = card.querySelectorAll(".letter");
-        letters.forEach((letter) => {
-            letter.style.transform = "";
-            const shadow = letter.querySelector(".letter-shadow");
-            if (shadow) {
-                shadow.style.transform = "";
-            }
-        });
+  // ——— 3) Particules sur tes typographic-cards ———
+  document.querySelectorAll(".typographic-card").forEach(card => {
+    // 3.1 injecte les particules dans chaque lettre
+    card.querySelectorAll(".letter").forEach(letter => {
+      for (let i = 0; i < 5; i++) {
+        const p = document.createElement("div");
+        p.className = "letter-particle";
+        p.style.left = `${Math.random()*100}%`;
+        p.style.top  = `${Math.random()*100}%`;
+        letter.appendChild(p);
+      }
     });
 
-    const glyphGrid = document.querySelector(".glyph-grid");
-    if (glyphGrid) {
-        const glyphs = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*";
-        for (let i = 0; i < 50; i++) {
-            const glyph = document.createElement("div");
-            glyph.className = "glyph";
-            glyph.textContent = glyphs[Math.floor(Math.random() * glyphs.length)];
-            glyph.style.left = `${Math.random() * 100}%`;
-            glyph.style.top = `${Math.random() * 100}%`;
-            glyph.style.transform = `rotate(${Math.random() * 360}deg)`;
-            glyph.style.transitionDelay = `${Math.random() * 0.5}s`;
-            glyphGrid.appendChild(glyph);
-        }
-    }
-
-    const letters = document.querySelectorAll(".typographic-card .letter");
-    letters.forEach((letter) => {
-        for (let i = 0; i < 5; i++) {
-            const particle = document.createElement("div");
-            particle.className = "letter-particle";
-            particle.style.left = `${Math.random() * 100}%`;
-            particle.style.top = `${Math.random() * 100}%`;
-            letter.appendChild(particle);
-        }
+    // 3.2 animate on hover
+    card.addEventListener("mouseenter", () => {
+      card.querySelectorAll(".letter-particle").forEach(particle => {
+        const angle    = Math.random()*Math.PI*2;
+        const distance = 20 + Math.random()*30;
+        const x        = Math.cos(angle)*distance;
+        const y        = Math.sin(angle)*distance;
+        particle.style.transform = `translate(${x}px, ${y}px)`;
+        particle.style.opacity   = "0.6";
+      });
     });
-
-    const typographicCard = document.querySelector(".typographic-card");
-    if (typographicCard) {
-        typographicCard.addEventListener("mouseenter", () => {
-            const particles = typographicCard.querySelectorAll(".letter-particle");
-            particles.forEach((particle) => {
-                const angle = Math.random() * Math.PI * 2;
-                const distance = 20 + Math.random() * 30;
-                const x = Math.cos(angle) * distance;
-                const y = Math.sin(angle) * distance;
-                particle.style.transform = `translate(${x}px, ${y}px)`;
-                particle.style.opacity = "0.6";
-            });
-        });
-
-        typographicCard.addEventListener("mouseleave", () => {
-            const particles = typographicCard.querySelectorAll(".letter-particle");
-            particles.forEach((particle) => {
-                particle.style.transform = "translate(0, 0)";
-                particle.style.opacity = "0";
-            });
-        });
-    }
+    card.addEventListener("mouseleave", () => {
+      card.querySelectorAll(".letter-particle").forEach(particle => {
+        particle.style.transform = "translate(0, 0)";
+        particle.style.opacity   = "0";
+      });
+    });
+  });
 });
