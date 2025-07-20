@@ -84,119 +84,39 @@ a,
 /* ========================================
    FULLSCREEN OVERLAY
    ======================================== */
+/* === Overlay === */
+/* === Overlay === */
 #loading-overlay {
   position: fixed;
   inset: 0;
-  /* top/right/bottom/left = 0 */
   display: flex;
   justify-content: center;
-  /* centre horizontalement */
   align-items: center;
-  /* centre verticalement */
   background: #d3cdc6;
-  /* fond blanc opaque */
   z-index: 9999;
-  overflow: hidden;
-  transition: opacity 1s ease 0s;
+  transition: opacity 1.2s ease;
   opacity: 1;
-  /* visible par défaut */
-
 }
-
-/* Quand on déclenche le fade-out */
 #loading-overlay.fade-out {
   opacity: 0;
   pointer-events: none;
 }
 
-/* Keyframes exemple */
-@keyframes move1 {
-  0% {
-    transform: translate(0, 0);
-  }
-
-  33% {
-    transform: translate(100px, 50px);
-  }
-
-  66% {
-    transform: translate(-50px, 100px);
-  }
-
-  100% {
-    transform: translate(0, 0);
-  }
+/* === Wave text === */
+.wave-text {
+  display: flex;
+  gap: 0.5em; /* espace entre les mots */
 }
 
-@keyframes move2 {
-  0% {
-    transform: translate(0, 0);
-  }
-
-  33% {
-    transform: translate(-80px, 80px);
-  }
-
-  66% {
-    transform: translate(120px, -40px);
-  }
-
-  100% {
-    transform: translate(0, 0);
-  }
-}
-
-@keyframes move3 {
-  0% {
-    transform: translate(0, 0);
-  }
-
-  33% {
-    transform: translate(60px, -80px);
-  }
-
-  66% {
-    transform: translate(-100px, 60px);
-  }
-
-  100% {
-    transform: translate(0, 0);
-  }
-}
-
-/* CONTENU DE L’OVERLAY */
-.overlay-content {
-  text-align: center;
-}
-
-/* 3) Style de ton titre */
-.overlay-content h1 {
-  margin: 0;
-  font-size: 2.5rem;
-  /* font-family: 'Segoe UI', sans-serif;*/
-}
-
-.overlay.fade-out {
-  opacity: 0;
-}
-
-/* Pour que chaque lettre puisse bouger */
 .wave-text span {
   display: inline-block;
-  margin-right: 0.5em;
+  animation: wave 1s ease-in-out infinite; /* Animation de base */
 }
 
 /* Keyframes de la vague */
 @keyframes wave {
-
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-10px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 
 /* ==========================================================================
@@ -364,12 +284,7 @@ a,
 .word-by-word span {
   display: inline-block;
   opacity: 0;
-  transform: translateY(20px);
-}
-
-/* quand on ajoute .animate au <h1>, on déclenche l’anim */
-.word-by-word.animate span {
-  animation: wordFadeUp .5s forwards;
+  transform: translateY(30px);
 }
 
 /* on décale chaque mot de 0.3s */

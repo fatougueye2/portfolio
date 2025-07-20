@@ -1,34 +1,53 @@
-window.addEventListener('load', () => {
-    const overlay = document.getElementById('loading-overlay');
-    if (!overlay) return;
-    // 1. lance le fade-out
-    overlay.classList.add('fade-out');
-    // 2. au terme de la transition, on le retire du flux pour libérer le clic sous-jacent
-    overlay.addEventListener('transitionend', () => {
-        overlay.style.display = 'none';
-    }, { once: true });
-});
-
 document.addEventListener('DOMContentLoaded', () => {
-    const wave = document.querySelector('.wave-text');
-    const text = wave.textContent;
-    wave.textContent = '';          // on vide
-    Array.from(text).forEach((char, i) => {
-        const span = document.createElement('span');
-        span.textContent = char;
-        // applique l’anim wave, 0.1s de délai entre chaque lettre
-        span.style.animation = `wave 1s ease-in-out ${i * 0.1}s infinite`;
-        wave.appendChild(span);
+  // 1) Animation de vague pour l'overlay (progression lettre par lettre)
+  const wave = document.querySelector('.wave-text');
+  if (wave) {
+    const text = wave.textContent.trim();
+    wave.textContent = ''; // Vider le contenu
+    let totalDelay = 0;
+    text.split('').forEach((char, i) => {
+      const span = document.createElement('span');
+      span.textContent = char;
+      // Décalage progressif pour chaque lettre sur toute la phrase
+      span.style.animationDelay = `${totalDelay}s`;
+      totalDelay += 0.1; // Incrément de 0.1s par lettre pour une progression fluide
+      wave.appendChild(span);
     });
-});
+  }
 
+  // 2) Gestion de l'overlay et animation post-fade-out (inchangé)
+  const overlay = document.getElementById('loading-overlay');
+  const heading = document.querySelector('.word-by-word');
+  if (overlay) {
+    // Déclencher le fade-out après 1,2 s
+    setTimeout(() => overlay.classList.add('fade-out'), 1200);
+
+    // Une fois le fade-out terminé, afficher le contenu principal et animer
+    overlay.addEventListener('transitionend', () => {
+      overlay.style.display = 'none';
+      if (heading) {
+        // Afficher le contenu principal
+        document.getElementById('main-content').style.display = 'block';
+        // Découper et animer .word-by-word
+        const words = heading.textContent.trim().split(' ');
+        heading.textContent = '';
+        words.forEach((word, i) => {
+          const span = document.createElement('span');
+          span.textContent = word + (i < words.length - 1 ? ' ' : '');
+          span.style.animation = `wordFadeUp .5s forwards ${0.3 * i}s`;
+          heading.appendChild(span);
+        });
+      }
+    }, { once: true });
+  }
+});
 
 window.addEventListener('load', () => {
     const overlay = document.getElementById('loading-overlay');
     const heading = document.querySelector('.word-by-word');
 
     // 1) on attend 5s puis on déclenche la disparition de l’overlay
-    setTimeout(() => overlay.classList.add('fade-out'), 2000);
+    setTimeout(() => overlay.classList.add('fade-out'), 1000);
 
     // 2) dès que le fade-out CSS (1s) est terminé, on construit et anime le texte
     overlay.addEventListener('transitionend', () => {
@@ -76,6 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+//modal
 document.addEventListener('DOMContentLoaded', () => {
     // Ouvre la modal SEULEMENT quand on clique sur le lien Discover
     document.querySelectorAll('.cta-link[data-modal]').forEach(link => {
@@ -121,33 +141,6 @@ document.addEventListener('DOMContentLoaded', () => {
         titleEl.textContent = item.dataset.title;
         descEl.textContent = item.dataset.desc;
     });
-});
-
-document.addEventListener('DOMContentLoaded', function () {
-    var splide = new Splide('#splide-experience', {
-        type: 'loop',
-        perPage: 3,
-        perMove: 1,
-        gap: '1rem',
-        autoplay: false,
-        pagination: false,
-        breakpoints: {
-            992: { perPage: 2 },
-            576: { perPage: 1 },
-        },
-    });
-
-    // Au premier affichage, on injecte la description de la slide 0
-    var descEl = document.getElementById('exp-description');
-    descEl.textContent = splide.Components.Slides.getAt(0).slide.dataset.desc;
-
-    // À chaque mouvement de Splide, on met à jour le texte
-    splide.on('move', function (newIndex) {
-        var slide = splide.Components.Slides.getAt(newIndex).slide;
-        descEl.textContent = slide.dataset.desc;
-    });
-
-    splide.mount();
 });
 
 
