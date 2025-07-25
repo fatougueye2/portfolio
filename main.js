@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
         words.forEach((word, i) => {
           const span = document.createElement('span');
           span.textContent = word + (i < words.length - 1 ? ' ' : '');
-          span.style.animation = `wordFadeUp .5s forwards ${0.3 * i}s`;
+          span.style.animation = `wordFadeUp .5s forwards ${0.4 * i}s`;
           heading.appendChild(span);
         });
       }
