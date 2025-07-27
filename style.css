@@ -434,8 +434,10 @@ h2 {
    Trois catégories : Front-end | Back-end | Outils & Méthodologies
    ========================================================================== */
 .competences-section {
+  max-width: 1200px;  /* ou la largeur de votre choix */
+  margin: 0 auto;     /* centre la section */
   padding: 4em 2em;
-  text-align: center;
+  text-align: center; /* centre votre h2 et le texte inline */
 }
 
 .competences-section h2 {
@@ -459,11 +461,11 @@ h2 {
 /* Chaque catégorie a son titre et sa grille */
 .competences-category {
   flex: 1 1 300px;
-  /* s’adapte, minimum 300px */
   max-width: 350px;
 }
 
 /* Titre de catégorie */
+/* Titre de catégorie (Front-end / Back-end / Outils & Méthodologies) */
 .competences-category h3 {
   font-size: 1.5rem;
   margin-bottom: 1rem;
@@ -473,6 +475,7 @@ h2 {
   padding-bottom: 0.25rem;
 }
 
+
 /* grille interne des cartes */
 .competences-grid {
   display: grid;
@@ -480,49 +483,39 @@ h2 {
   gap: 1rem;
 }
 
-/* carte de compétence */
 .competence-card {
-  background: var(--color-accent-1);
   border-radius: 12px;
   padding: 1rem 0.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: background 0.3s ease, transform 0.3s ease;
-  cursor: default;
+  color: #fff;             /* texte en blanc pour le contraste */
+  transition: transform .3s;
 }
-
-.competence-card i {
-  font-size: 1.75rem;
-  color: var(--color-accent-3);
-  margin-bottom: 0.4rem;
-}
-
-.competence-card span {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--color-text);
-}
-
-/* hover léger */
 .competence-card:hover {
-  background: var(--color-accent-2);
   transform: translateY(-4px);
 }
 
-/* Responsive pour petits écrans */
-@media (max-width: 768px) {
-  .competences-categories {
-    flex-direction: column;
-    align-items: center;
-  }
+/* Couleurs officielles des logos */
+.html5        { background: #e34f26d0; }
+.css3         { background: #1573b6c7; }
+.javascript   { background: #f7de1ea9; color: #000; } /* texte noir si nécessaire */
+.reactjs      { background: #61dafbb7; color: #000; }
+.nodejs       { background: #339933b9; }
+.python       { background: #3777abcc; }
+.postgresql   { background: #336791bd; }
+.docker       { background: #2496edd0; }
+.git          { background: #f04e32c8; }
+.cicd         { background: #0052ccd3; } /* exemple pour CI/CD */
+.scrum        { background: #4caf4fd4; } /* vert pour Agile/Scrum */
+.linux        { background: #000000ca; }
 
-  .competences-category {
-    max-width: none;
-    width: 100%;
+/* Responsive (2 colonnes sur petits écrans) */
+@media (max-width: 768px) {
+  .competences-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
-
 /* ================================
    Section Éducation & Experiences
    ================================ */
